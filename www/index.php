@@ -1,2 +1,2 @@
 <?php
-include __DIR__ . '/../tamplates/main.php';
+include __DIR__ . '/../tamplates/main.html';
