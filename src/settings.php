@@ -3,7 +3,7 @@
 return [
     'db' => [
         'host' => 'localhost',
-        'dbname' => 'related_list',
+        'dbname' => 'calc',
         'user' => 'root',
         'password' => '',
     ]
