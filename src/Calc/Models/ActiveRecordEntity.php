@@ -187,6 +187,21 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         return $result;
     }
 
+    public static function getColumn(string $columnName, bool $isDistinct): ?array
+    {
+        $db = Db::getInstance();
+        $distinct = ($isDistinct == true) ? 'DISTINCT' : '';
+        $result = $db->query(
+            'SELECT ' . $distinct . ' `'.$columnName.'` FROM `' . static::getTableName().'`;',
+            [],
+            static::class
+        );
+        if ($result === []) {
+            return null;
+        }
+        return $result;
+    }
+
     /**
      * @param int $id
      * @return static|null
