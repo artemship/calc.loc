@@ -1,6 +1,6 @@
 <?php
 
-namespace MyProject\Models;
+namespace Calc\Models;
 
 use Calc\Services\Db;
 
