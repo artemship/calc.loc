@@ -2,16 +2,14 @@
 
 namespace Calc\Controllers;
 
-
-use Calc\Models\Cars\Mark;
-use Calc\Services\Db;
+use Calc\Models\Cars\Car;
 
 class MainController extends AbstractController
 {
     public function main()
     {
-        $marks = Mark::getColumn('mark_name', true);
-        $this->view->renderHtml('main.php', ['marks' => $marks]);
+        $cars = Car::getColumn('mark', true);
+        $this->view->renderHtml('main.php', ['cars' => $cars]);
     }
 
 }

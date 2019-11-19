@@ -2,7 +2,7 @@
     require __DIR__ . '/../vendor/autoload.php';
 
 use Calc\Exceptions\NotFoundException;
-use Calc\Models\Cars\Mark;
+use Calc\Models\Cars\Car;
 use Calc\Services\Db;
 use Calc\View\View;
 

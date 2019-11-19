@@ -4,10 +4,10 @@ namespace Calc\Models\Cars;
 
 use Calc\Models\ActiveRecordEntity;
 
-class Mark extends ActiveRecordEntity
+class Car extends ActiveRecordEntity
 {
     /** @var string */
-    protected $markName;
+    protected $mark;
     /** @var string */
     protected $model;
     /** @var int */
@@ -16,9 +16,9 @@ class Mark extends ActiveRecordEntity
     /**
      * @return string
      */
-    public function getMarkName(): string
+    public function getMark(): string
     {
-        return $this->markName;
+        return $this->mark;
     }
 
     /**
@@ -39,7 +39,7 @@ class Mark extends ActiveRecordEntity
 
     protected static function getTableName(): string
     {
-        return 'marks';
+        return 'cars';
     }
 
 
