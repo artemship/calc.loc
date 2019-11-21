@@ -1,0 +1,17 @@
+{
+    "name": "artemship/calc",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Artem Shipilov",
+            "email": "avs.artem@list.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Calc\\": "src/Calc/"
+        }
+    },
+    "require": {}
+}

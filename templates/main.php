@@ -6,3 +6,5 @@ foreach ($cars as $car) {
 }
 
 include __DIR__ . '/../templates/footer.php';
+
+include __DIR__ . '/../templates/testFront.php';
