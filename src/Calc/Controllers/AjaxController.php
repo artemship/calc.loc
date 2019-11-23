@@ -20,8 +20,27 @@ class AjaxController
             );
             foreach ($entities as $entity) {
                 //echo '<input type="text" value="' . $entity->base_tariff . '">';
-                echo $entity->base_tariff*100 . '%';
+                echo $entity->base_tariff * 100 . '%';
             }
         }
     }
+
+    public function selectMark()
+    {
+        if (isset($_POST['mark']) && !empty($_POST['mark'])) {
+            $mark = $_POST['mark'];
+            $db = Db::getInstance();
+            $entities = $db->query(
+                'SELECT `model`, `group` FROM `cars` WHERE `mark` = "' . $mark . '"');
+            echo '<select class="form-control" id="js-select-model">';
+            foreach ($entities as $entity) {
+                echo '<option value="' . $entity->group . '">' . $entity->model . '</option>';
+            }
+            echo '</select>';
+
+        } else {
+            echo '<select class="form-control" id="js-select-model" disabled><option value="0">--Выбрать модель--</option></select>';
+        }
+    }
+
 }

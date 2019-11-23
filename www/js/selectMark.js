@@ -2,7 +2,7 @@ $(function () {
     var mark = $("#js-select-mark").val();
     $.ajax({
         type: 'POST',
-        url: 'command.php',
+        url: '/ajax/select/mark',
         data: {mark: mark},
         success: function (data) {
             $(".model").html(data);
@@ -15,7 +15,7 @@ $(function () {
         }
         $.ajax({
             type: 'POST',
-            url: 'command.php',
+            url: '/ajax/select/mark',
             data: {mark: mark},
             success: function (data) {
                 $(".model").html(data);
