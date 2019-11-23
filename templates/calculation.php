@@ -53,6 +53,17 @@
                 <button type="button" class="btn btn-secondary" id="js-btn-submit">Продолжить</button>
             </div>
 
+            <div class="col-5 form-group">
+                <label for="exampleFormControlSelect1">Франшиза</label>
+                <select class="form-control" id="js-select-franchise">
+                    <?php if (!empty($franchises)):
+                        foreach ($franchises as $franchise): ?>
+                            <option value="<?= $franchise->getValue(); ?>"><?= $franchise->getValue() . ' %' ?></option>
+                        <? endforeach;
+                    endif ?>
+                </select>
+            </div>
+
         </div>
     </form>
 
