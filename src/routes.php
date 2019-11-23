@@ -2,6 +2,7 @@
 
 return [
     '~^$~' => [\Calc\Controllers\MainController::class, 'main'],
+    '~^ajax/btn/submit$~' => [\Calc\Controllers\AjaxController::class, 'submit'],
 //    '~^articles/(\d+)/comments/(\d+)/delete$~' => [\MyProject\Controllers\CommentsController::class, 'delete'],
 //    '~^articles/(\d+)/comments/(\d+)/edit$~' => [\MyProject\Controllers\CommentsController::class, 'edit'],
 //    '~^articles/(\d+)/comments$~' => [\MyProject\Controllers\CommentsController::class, 'add'],

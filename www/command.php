@@ -1,10 +1,10 @@
-<script>
-    $(function () {
-        $('select[id="js-select-model"]').change(function () {
-            alert($('select[id="js-select-model"]').val());
-        });
-    });
-</script>
+<!--<script>-->
+<!--    $(function () {-->
+<!--        $('select[id="js-select-model"]').change(function () {-->
+<!--            alert($('select[id="js-select-model"]').val());-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -14,7 +14,7 @@ if (isset($_POST['mark']) && !empty($_POST['mark'])) {
     $mark = $_POST['mark'];
     $db = Db::getInstance();
     $entities = $db->query(
-        'SELECT `model`, `group` FROM `cars` WHERE `mark` = "' . $mark .'"');
+        'SELECT `model`, `group` FROM `cars` WHERE `mark` = "' . $mark . '"');
     echo '<select class="form-control" id="js-select-model">';
     foreach ($entities as $entity) {
         echo '<option value="' . $entity->group . '">' . $entity->model . '</option>';
@@ -23,5 +23,12 @@ if (isset($_POST['mark']) && !empty($_POST['mark'])) {
 
 } else {
     echo '<select class="form-control" id="js-select-model" disabled><option value="0">--Выбрать модель--</option></select>';
+
+
+
+//        echo '<input type="text" value="123">';
+//        echo '<input type="text" value="123 ' . $entities[0]['base_tariff'] . '">';
+
+
 
 }

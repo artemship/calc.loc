@@ -9,7 +9,23 @@ class MainController extends AbstractController
     public function main()
     {
         $cars = Car::getColumn('mark', true);
-        $this->view->renderHtml('main.php', ['cars' => $cars]);
+        for ($i = 0; $i <= 6; $i++) {
+            $carsAge[$i] = (string)((int)(date('Y') - $i));
+        }
+        $insuranceRisks['damage'] = 'Ущерб';
+        $insuranceRisks['full'] = 'Ущерб + Хищение';
+
+
+        $this->view->renderHtml('main.php', [
+            'cars' => $cars,
+            'carsAge' => $carsAge,
+            'insuranceRisks' => $insuranceRisks
+        ]);
+    }
+
+    public function ajax()
+    {
+        echo '123';
     }
 
 }
