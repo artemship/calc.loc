@@ -16,13 +16,16 @@ class AjaxController
             $insuranceRisk = $_POST['insuranceRisk'];
             $db = Db::getInstance();
             $entities = $db->query(
-                'SELECT `base_tariff` FROM `tariffs`
+                'SELECT `value` FROM `base_tariffs`
                 WHERE `group_id` = :group AND `car_age` = :ageCar AND `insurance` = :insuranceRisk;',
-                [':group' => $group, ':ageCar' => $ageCar, ':insuranceRisk' => $insuranceRisk]
+                [
+                    ':group' => $group,
+                    ':ageCar' => $ageCar,
+                    ':insuranceRisk' => $insuranceRisk
+                ]
             );
             foreach ($entities as $entity) {
-                //echo '<input type="text" value="' . $entity->base_tariff . '">';
-                echo $entity->base_tariff * 100 . '%';
+                echo $entity->value * 100 . ' %';
             }
         }
     }
