@@ -23,9 +23,5 @@ class MainController extends AbstractController
         ]);
     }
 
-    public function ajax()
-    {
-        echo '123';
-    }
 
 }

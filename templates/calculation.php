@@ -16,7 +16,10 @@
 
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1">Модель</label>
-                <span class="model"></span>
+                <select class="form-control" id="js-select-model" disabled>
+                    <option value="0">--Выбрать модель--</option>
+                </select>
+<!--                <span class="model"></span>-->
             </div>
 
             <div class="col-5 form-group">
@@ -41,16 +44,13 @@
                 </select>
             </div>
 
-            <div class=" col-5 text-right ">
-                <button type="button" class="btn btn-secondary" id="js-btn-submit">Продолжить</button>
-            </div>
-
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1">Базовый тариф</label>
                 <input type="text" id="base-tariff" disabled>
-                <!--                <span class="base-tariff">-->
-                <!--                    <input type="text" value="123" id="js-text">-->
-                <!--                </span>-->
+            </div>
+
+            <div class=" col-5 text-right ">
+                <button type="button" class="btn btn-secondary" id="js-btn-submit">Продолжить</button>
             </div>
 
         </div>

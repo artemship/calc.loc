@@ -16,7 +16,9 @@ class AjaxController
             $insuranceRisk = $_POST['insuranceRisk'];
             $db = Db::getInstance();
             $entities = $db->query(
-                'SELECT `base_tariff` FROM `tariffs`WHERE `group_id` = ' . $group . ' AND `car_age` = ' . $ageCar . ' AND `insurance` = \'' . $insuranceRisk . '\';'
+                'SELECT `base_tariff` FROM `tariffs`
+                WHERE `group_id` = :group AND `car_age` = :ageCar AND `insurance` = :insuranceRisk;',
+                [':group' => $group, ':ageCar' => $ageCar, ':insuranceRisk' => $insuranceRisk]
             );
             foreach ($entities as $entity) {
                 //echo '<input type="text" value="' . $entity->base_tariff . '">';
@@ -31,15 +33,12 @@ class AjaxController
             $mark = $_POST['mark'];
             $db = Db::getInstance();
             $entities = $db->query(
-                'SELECT `model`, `group` FROM `cars` WHERE `mark` = "' . $mark . '"');
-            echo '<select class="form-control" id="js-select-model">';
+                'SELECT `model`, `group` FROM `cars` WHERE `mark` = :mark;',
+                [':mark' => $mark]
+            );
             foreach ($entities as $entity) {
                 echo '<option value="' . $entity->group . '">' . $entity->model . '</option>';
             }
-            echo '</select>';
-
-        } else {
-            echo '<select class="form-control" id="js-select-model" disabled><option value="0">--Выбрать модель--</option></select>';
         }
     }
 
