@@ -3,6 +3,7 @@
 namespace Calc\Models\Calculation;
 
 use Calc\Models\ActiveRecordEntity;
+use Calc\Services\Db;
 
 class Franchise extends ActiveRecordEntity
 {
@@ -41,4 +42,20 @@ class Franchise extends ActiveRecordEntity
     {
         return 'franchises';
     }
+
+    public static function selectCoefficient(int $value, int $groupId): ?float
+    {
+        $db = Db::getInstance();
+        $result = $db->query(
+            'SELECT `coefficient` FROM `' . static::getTableName() . '`
+            WHERE `value` = :value AND `group_id` = :groupId;',
+            [
+                ':value' => $value,
+                ':groupId' => $groupId
+            ]
+        );
+        return $result[0]->coefficient ? $result[0]->coefficient : null;
+    }
+
+
 }

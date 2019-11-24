@@ -3,6 +3,7 @@
 namespace Calc\Controllers;
 
 use Calc\Models\Calculation\BaseTariff;
+use Calc\Models\Calculation\Franchise;
 use Calc\Services\Db;
 
 class CalculationController
@@ -14,14 +15,23 @@ class CalculationController
             $insurance = $_POST['insurance'];
             $carAge = $_POST['carAge'];
 
-            $baseTariff = BaseTariff::findValue($group, $insurance, $carAge);
+            $baseTariff = BaseTariff::selectTariff($group, $insurance, $carAge);
         }
 
-        if (!isset($baseTariff)){
+        if (!isset($baseTariff)) {
             echo 0;
             return;
         }
-            echo $baseTariff * 100 . ' %';
+
+        if (isset($_POST['franchise'])) {
+            $franchiseValue = $_POST['franchise'];
+            $franchise = Franchise::selectCoefficient($franchiseValue, $group);
+        }
+
+
+
+
+        echo $baseTariff * $franchise * 100 . ' %';
 
 
     }

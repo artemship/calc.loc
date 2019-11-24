@@ -55,7 +55,7 @@ class BaseTariff extends ActiveRecordEntity
         return 'base_tariffs';
     }
 
-    public static function findValue(int $groupId, string $insurance, int $carAge): ?float
+    public static function selectTariff(int $groupId, string $insurance, int $carAge): ?float
     {
         $db = Db::getInstance();
         $result = $db->query(
