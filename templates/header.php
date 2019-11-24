@@ -11,21 +11,5 @@
     <!-- подключаем jquery -->
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/selectMark.js"></script>
-
- 
 </head>
 <body>
-
-
-
-
-
-<section id="form-parameter">
-
-    <form>
-        <div class="container">
-            <div class="col-5 form-group ">
-                <label for="exampleFormControlSelect1">Параметр 1</label>
-                <select class="form-control  " id="js-select-mark">
-                    <option value="0">--Выбрать марку--</option>
-

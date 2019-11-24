@@ -1,6 +1,6 @@
 <?php
 
-namespace Calc\Models\Cars;
+namespace Calc\Models\Calculation;
 
 use Calc\Models\ActiveRecordEntity;
 
