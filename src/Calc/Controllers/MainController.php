@@ -15,8 +15,8 @@ class MainController extends AbstractController
             $carsAge[$i] = (string)((int)(date('Y') - $i));
         }
 
-        $insuranceRisks['damage'] = 'Ущерб';
-        $insuranceRisks['full'] = 'Ущерб + Хищение';
+        $insurances['damage'] = 'Ущерб';
+        $insurances['full'] = 'Ущерб + Хищение';
 
         $franchises = Franchise::getColumn('value', true);
 
@@ -24,7 +24,7 @@ class MainController extends AbstractController
         $this->view->renderHtml('main.php', [
             'cars' => $cars,
             'carsAge' => $carsAge,
-            'insuranceRisks' => $insuranceRisks,
+            'insurances' => $insurances,
             'franchises' => $franchises
         ]);
     }

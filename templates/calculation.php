@@ -24,7 +24,7 @@
 
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1">Год выпуска</label>
-                <select class="form-control " id="js-select-age-car">
+                <select class="form-control " id="js-select-car-age">
                     <?php if (!empty($carsAge)):
                         foreach ($carsAge as $key => $carAge): ?>
                             <option value="<?= $key; ?>"><?= $carAge ?></option>
@@ -35,22 +35,13 @@
 
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1">Страховой риск</label>
-                <select class="form-control " id="js-select-insurance-risk">
-                    <?php if (!empty($insuranceRisks)):
-                        foreach ($insuranceRisks as $key => $insuranceRisk): ?>
-                            <option value="<?= $key; ?>"><?= $insuranceRisk ?></option>
+                <select class="form-control " id="js-select-insurance">
+                    <?php if (!empty($insurances)):
+                        foreach ($insurances as $key => $insurance): ?>
+                            <option value="<?= $key; ?>"><?= $insurance ?></option>
                         <? endforeach;
                     endif ?>
                 </select>
-            </div>
-
-            <div class="col-5 form-group">
-                <label for="exampleFormControlSelect1">Базовый тариф</label>
-                <input type="text" id="base-tariff" disabled>
-            </div>
-
-            <div class=" col-5 text-right ">
-                <button type="button" class="btn btn-secondary" id="js-btn-submit">Продолжить</button>
             </div>
 
             <div class="col-5 form-group">
@@ -62,6 +53,25 @@
                         <? endforeach;
                     endif ?>
                 </select>
+            </div>
+
+            <div class="col-5 form-group">
+                <label for="exampleFormControlSelect1">Возраст водителя</label>
+                <input type="text" id="age">
+            </div>
+
+            <div class="col-5 form-group">
+                <label for="exampleFormControlSelect1">Стаж</label>
+                <input type="text" id="experience">
+            </div>
+
+            <div class="col-5 form-group">
+                <label for="exampleFormControlSelect1">Тариф</label>
+                <input type="text" id="tariff" disabled>
+            </div>
+
+            <div class=" col-5 text-right ">
+                <button type="button" class="btn btn-secondary" id="js-btn-submit">Рассчитать</button>
             </div>
 
         </div>

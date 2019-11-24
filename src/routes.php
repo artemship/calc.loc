@@ -2,8 +2,8 @@
 
 return [
     '~^$~' => [\Calc\Controllers\MainController::class, 'main'],
-    '~^ajax/btn/submit$~' => [\Calc\Controllers\AjaxController::class, 'submit'],
-    '~^ajax/select/mark$~' => [\Calc\Controllers\AjaxController::class, 'selectMark'],
+    '~^ajax/btn/submit$~' => [\Calc\Controllers\CalculationController::class, 'submit'],
+    '~^ajax/select/mark$~' => [\Calc\Controllers\CalculationController::class, 'selectMark'],
 //    '~^articles/(\d+)/comments/(\d+)/delete$~' => [\MyProject\Controllers\CommentsController::class, 'delete'],
 //    '~^articles/(\d+)/comments/(\d+)/edit$~' => [\MyProject\Controllers\CommentsController::class, 'edit'],
 //    '~^articles/(\d+)/comments$~' => [\MyProject\Controllers\CommentsController::class, 'add'],

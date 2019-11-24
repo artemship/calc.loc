@@ -21,7 +21,7 @@ $(function () {
                 // $(".model").html(data);
                 if (mark == 0) {
                     $("#js-select-model").prop("disabled", true);
-                    $("#base-tariff").val('');
+                    $("#tariff").val('');
                 } else {
                     $("#js-select-model").prop("disabled", false);
                     $("#js-select-model").html(data);
@@ -36,18 +36,18 @@ $(function () {
     $("#js-btn-submit").click(function () {
         var mark = $("#js-select-mark").val();
         var group = $("#js-select-model").val();
-        var ageCar = $("#js-select-age-car").val();
-        var insuranceRisk = $("#js-select-insurance-risk").val();
+        var carAge = $("#js-select-car-age").val();
+        var insurance = $("#js-select-insurance").val();
         if (mark == 0) {
-            $("#base-tariff").val('Выберите марку');
+            $("#tariff").val('Выберите марку');
             return;
         }
         $.ajax({
             type: 'POST',
             url: '/ajax/btn/submit',
-            data: {group: group, ageCar: ageCar, insuranceRisk: insuranceRisk},
+            data: {group: group, carAge: carAge, insurance: insurance},
             success: function (data) {
-                $("#base-tariff").val(data);
+                $("#tariff").val(data);
                 //alert(data);
                 // alert(group + ageCar + insuranceRisk);
             }
