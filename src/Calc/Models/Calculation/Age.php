@@ -43,5 +43,14 @@ class Age extends ActiveRecordEntity
         return $result[0]->age_group ? $result[0]->age_group : null;
     }
 
+    public static function selectMaxAge(): ?int
+    {
+        $db = Db::getInstance();
+        $result = $db->query(
+            'SELECT MAX(`value`) AS max FROM `' . static::getTableName() . '`;'
+        );
+        return $result[0]->max ? $result[0]->max : null;
+    }
+
 
 }

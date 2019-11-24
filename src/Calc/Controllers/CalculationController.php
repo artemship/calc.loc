@@ -31,13 +31,17 @@ class CalculationController
             $franchiseCoefficient = Franchise::selectCoefficient($franchise, $group);
         }
 
-        if (!empty($_POST['age']) && !empty($_POST['experience'])) {
+        if (!empty($_POST['age']) && isset($_POST['experience'])) {
             $age = $_POST['age'];
             $experience = $_POST['experience'];
-            if ($age - $experience <= 18) {
+            if ($age - $experience < 18) {
                 echo 0;
                 return;
             }
+            $maxAge = Age::selectMaxAge();
+            $maxExperience = Experience::selectMaxExperience();
+            $age = ($age > $maxAge) ? $maxAge : $age;
+            $experience = ($experience > $maxExperience) ? $maxExperience : $experience;
             $ageGroup = Age::selectAgeGroup($age);
             $experienceGroup = Experience::selectExperienceGroup($experience);
             $ageAndExperienceCoefficient = AgeAndExperienceCoefficient::selectCoefficient($ageGroup, $experienceGroup);

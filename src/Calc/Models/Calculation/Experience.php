@@ -43,5 +43,14 @@ class Experience extends ActiveRecordEntity
         return $result[0]->experience_group ? $result[0]->experience_group : null;
     }
 
+    public static function selectMaxExperience(): ?int
+    {
+        $db = Db::getInstance();
+        $result = $db->query(
+            'SELECT MAX(`value`) AS max FROM `' . static::getTableName() . '`;'
+        );
+        return $result[0]->max ? $result[0]->max : null;
+    }
+
 
 }
