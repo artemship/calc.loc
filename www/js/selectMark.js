@@ -39,6 +39,8 @@ $(function () {
         var carAge = $("#js-select-car-age").val();
         var insurance = $("#js-select-insurance").val();
         var franchise = $("#js-select-franchise").val();
+        var age = $("#js-age").val();
+        var experience = $("#js-experience").val();
         if (mark == 0) {
             $("#tariff").val('Выберите марку');
             return;
@@ -46,7 +48,14 @@ $(function () {
         $.ajax({
             type: 'POST',
             url: '/ajax/btn/submit',
-            data: {group: group, carAge: carAge, insurance: insurance, franchise: franchise},
+            data: {
+                group: group,
+                carAge: carAge,
+                insurance: insurance,
+                franchise: franchise,
+                age: age,
+                experience: experience
+            },
             success: function (data) {
                 $("#tariff").val(data);
                 //alert(data);

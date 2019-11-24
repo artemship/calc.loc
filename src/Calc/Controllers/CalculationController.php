@@ -2,7 +2,10 @@
 
 namespace Calc\Controllers;
 
+use Calc\Models\Calculation\Age;
+use Calc\Models\Calculation\AgeAndExperienceCoefficient;
 use Calc\Models\Calculation\BaseTariff;
+use Calc\Models\Calculation\Experience;
 use Calc\Models\Calculation\Franchise;
 use Calc\Services\Db;
 
@@ -24,14 +27,23 @@ class CalculationController
         }
 
         if (isset($_POST['franchise'])) {
-            $franchiseValue = $_POST['franchise'];
-            $franchise = Franchise::selectCoefficient($franchiseValue, $group);
+            $franchise = $_POST['franchise'];
+            $franchiseCoefficient = Franchise::selectCoefficient($franchise, $group);
         }
 
+        if (!empty($_POST['age']) && !empty($_POST['experience'])) {
+            $age = $_POST['age'];
+            $experience = $_POST['experience'];
+            if ($age - $experience <= 18) {
+                echo 0;
+                return;
+            }
+            $ageGroup = Age::selectAgeGroup($age);
+            $experienceGroup = Experience::selectExperienceGroup($experience);
+            $ageAndExperienceCoefficient = AgeAndExperienceCoefficient::selectCoefficient($ageGroup, $experienceGroup);
+        }
 
-
-
-        echo $baseTariff * $franchise * 100 . ' %';
+        echo $baseTariff * $franchiseCoefficient * $ageAndExperienceCoefficient * 100 . ' %';
 
 
     }
