@@ -45,6 +45,14 @@ $(function () {
             $("#tariff").val('Выберите марку');
             return;
         }
+        if (age < 18) {
+            alert("Возраст должен быть больше 18 лет!");
+            return;
+        }
+        if ((age - experience) < 18) {
+            alert("Стаж указан неверно, проверьте введнные данные!") 
+              return; 
+        }
         $.ajax({
             type: 'POST',
             url: '/ajax/btn/submit',
