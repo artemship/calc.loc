@@ -49,16 +49,24 @@ $(function () {
            //$("#js-age").val('Возраст должен быть больше 18 лет!');
 
              
-                document.getElementById("error_v").innerHTML="Возраст должен быть больше 18 лет!";}
+                document.getElementById("error_v").innerHTML="Возраст должен быть больше 18 лет!";
+                document.getElementById("js-age").style.borderColor = "#AA0000";
+                document.getElementById("error_v").style.fontFamily = "cursive";
+            }
                 else {
                     document.getElementById("error_v").innerHTML=null;
+                    document.getElementById("js-age").style.borderColor = null;
         }
         if ((age - experience) < 18) {
 
 
-            document.getElementById("error_s").innerHTML="Стаж указан неверно, проверьте введенные данные!";}
+            document.getElementById("error_s").innerHTML="Стаж указан неверно, проверьте введенные данные!";
+            document.getElementById("js-experience").style.borderColor = "#AA0000";
+            document.getElementById("error_s").style.fontFamily = "cursive";}
                 else {
                     document.getElementById("error_s").innerHTML=null;
+                    document.getElementById("js-experience").style.borderColor = null;
+                    
            //$("#js-experience").val('Стаж указан неверно, проверьте введенные данные!'); 
         }
         $.ajax({
