@@ -31,7 +31,7 @@ class CalculationController
             $franchiseCoefficient = Franchise::selectCoefficient($franchise, $group);
         }
 
-        if (!empty($_POST['age']) && isset($_POST['experience'])) {
+        if (!empty($_POST['age']) && !empty($_POST['experience'])) {
             $age = $_POST['age'];
             $experience = $_POST['experience'];
             if ($age - $experience < 18) {

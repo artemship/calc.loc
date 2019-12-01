@@ -46,12 +46,20 @@ $(function () {
             return;
         }
         if (age < 18) {
-            alert("Возраст должен быть больше 18 лет!");
-            return;
+           //$("#js-age").val('Возраст должен быть больше 18 лет!');
+
+             
+                document.getElementById("error_v").innerHTML="Возраст должен быть больше 18 лет!";}
+                else {
+                    document.getElementById("error_v").innerHTML=null;
         }
         if ((age - experience) < 18) {
-            alert("Стаж указан неверно, проверьте введнные данные!") 
-              return; 
+
+
+            document.getElementById("error_s").innerHTML="Стаж указан неверно, проверьте введенные данные!";}
+                else {
+                    document.getElementById("error_s").innerHTML=null;
+           //$("#js-experience").val('Стаж указан неверно, проверьте введенные данные!'); 
         }
         $.ajax({
             type: 'POST',
@@ -74,3 +82,8 @@ $(function () {
     });
 
 });
+
+function nulltariff()
+{
+    document.getElementById("tariff").value=0;
+}
