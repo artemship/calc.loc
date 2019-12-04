@@ -41,10 +41,10 @@ $(function () {
         var franchise = $("#js-select-franchise").val();
         var age = $("#js-age").val();
         var experience = $("#js-experience").val();
-        if (mark == 0) {
-            $("#tariff").val('Выберите марку');
-            return;
-        }
+        // if (mark == 0) {
+        //     $("#tariff").val('Выберите марку');
+        //     return;
+        // }
         $.ajax({
             type: 'POST',
             url: '/ajax/btn/submit',

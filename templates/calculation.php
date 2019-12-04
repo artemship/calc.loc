@@ -57,12 +57,12 @@
 
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1">Возраст водителя</label>
-                <input type="text" id="js-age">
+                <input type="text" id="js-age" placeholder="Возраст водителя">
             </div>
 
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1">Стаж</label>
-                <input type="text" id="js-experience">
+                <input type="text" id="js-experience" placeholder="Стаж водителя">
             </div>
 
             <div class="col-5 form-group">
