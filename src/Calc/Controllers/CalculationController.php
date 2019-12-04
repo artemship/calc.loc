@@ -13,48 +13,33 @@ class CalculationController
 {
     public function submit()
     {
-//        if (!empty($_POST['group']) && !empty($_POST['insurance']) && isset($_POST['carAge'])) {
-//            $group = $_POST['group'];
-//            $insurance = $_POST['insurance'];
-//            $carAge = $_POST['carAge'];
-//
-//            $baseTariff = BaseTariff::selectTariff($group, $insurance, $carAge);
-//        }
 
         if (empty($_POST['group'])) {
-            echo 'Не задана марка/модель';
-            return;
+            die (json_encode('Wrong Mark/Model'));
         }
 
         if (empty($_POST['insurance'])) {
-            echo 'Не задан ущерб';
-            return;
+            die (json_encode('Wrong Insurance'));
         }
 
         if (!isset($_POST['carAge'])) {
-            echo 'Не задан год выпуска';
-            return;
+            die (json_encode('Wrong Car Age'));
         }
 
         if (!isset($_POST['franchise'])) {
-            echo 'Не задана франшиза';
-            return;
+            die (json_encode('Wrong Franchise'));
         }
 
         $age = preg_match('~^\d+$~', trim($_POST['age'])) ? (int)($_POST['age']) : null;
         $experience = preg_match('~^\d+$~', trim($_POST['experience'])) ? (int)($_POST['experience']) : null;
 
         if ($age < 18) {
-            echo 'Неверный возраст';
-            return;
+            die (json_encode('Wrong Age'));
         }
 
         if (is_null($experience) || $age - $experience < 18) {
-            echo 'Неверный стаж';
-            return;
+            die (json_encode('Wrong Experience'));
         }
-//        echo 'good';
-//        return;
 
         $group = $_POST['group'];
         $insurance = $_POST['insurance'];
@@ -73,23 +58,9 @@ class CalculationController
         $experienceGroup = Experience::selectExperienceGroup($experience);
         $ageAndExperienceCoefficient = AgeAndExperienceCoefficient::selectCoefficient($ageGroup, $experienceGroup);
 
-//        if (!empty($_POST['age']) && isset($_POST['experience'])) {
-//            $age = $_POST['age'];
-//            $experience = $_POST['experience'];
-//            if ($age - $experience < 18) {
-//                echo 0;
-//                return;
-//            }
-//            $maxAge = Age::selectMaxAge();
-//            $maxExperience = Experience::selectMaxExperience();
-//            $age = ($age > $maxAge) ? $maxAge : $age;
-//            $experience = ($experience > $maxExperience) ? $maxExperience : $experience;
-//            $ageGroup = Age::selectAgeGroup($age);
-//            $experienceGroup = Experience::selectExperienceGroup($experience);
-//            $ageAndExperienceCoefficient = AgeAndExperienceCoefficient::selectCoefficient($ageGroup, $experienceGroup);
-//        }
+        $data = $baseTariff * $franchiseCoefficient * $ageAndExperienceCoefficient * 100 . ' %';
 
-        echo $baseTariff * $franchiseCoefficient * $ageAndExperienceCoefficient * 100 . ' %';
+        echo json_encode($data);
 
 
     }

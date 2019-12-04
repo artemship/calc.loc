@@ -46,8 +46,9 @@ $(function () {
         //     return;
         // }
         $.ajax({
-            type: 'POST',
             url: '/ajax/btn/submit',
+            type: 'POST',
+            dataType: 'JSON',
             data: {
                 group: group,
                 carAge: carAge,
