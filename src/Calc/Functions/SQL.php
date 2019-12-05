@@ -42,14 +42,38 @@ class SQL
         return $result[0]->$selectColumn ? $result[0]->$selectColumn : null;
     }
 
-//    public static function getTariff(): ?float
-//    {
-//        $db = Db::getInstance();
-//        $result = $db->query(
-//            'SELECT `' . $selectColumn . '` FROM `' . $fromTable . '` WHERE `' . $whereColumn . '` = :value;',
-//            [':value' => $value]
-//        );
-//        return $result[0]->$selectColumn ? $result[0]->$selectColumn : null;
-//    }
+    public static function getTariff(int $group, int $carAge, string $insurance, int $franchise, int $age, int $experience): ?float
+    {
+        $db = Db::getInstance();
+        $result = $db->query(
+            'SELECT b.value
+                         * f.coefficient
+                         * (SELECT ae.coefficient
+                              FROM age_and_experience_coefficient AS ae
+                                   LEFT JOIN age AS a
+                                   ON ae.age_group_id = a.age_group
+                
+                                   LEFT JOIN experience AS e
+                                   ON ae.experience_group_id = e.experience_group
+                             WHERE a.value = :age AND e.value = :experience)
+                         * 100 AS tariff
+                    FROM base_tariffs AS b
+                         LEFT JOIN franchises AS f
+                         ON b.group_id = f.group_id
+                   WHERE b.group_id = :group
+                     AND b.insurance = :insurance
+                     AND b.car_age = :carAge
+                     AND f.value = :franchise;',
+            [
+                ':age' => $age,
+                ':experience' => $experience,
+                ':group' => $group,
+                ':insurance' => $insurance,
+                ':carAge' => $carAge,
+                ':franchise' => $franchise,
+            ]
+        );
+        return $result[0]->tariff ? $result[0]->tariff : null;
+    }
 
 }

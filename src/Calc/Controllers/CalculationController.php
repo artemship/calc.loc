@@ -21,12 +21,12 @@ class CalculationController extends AbstractController
             die (json_encode('Wrong Mark/Model'));
         }
 
-        if (empty($_POST['insurance'])) {
-            die (json_encode('Wrong Insurance'));
-        }
-
         if (!isset($_POST['carAge'])) {
             die (json_encode('Wrong Car Age'));
+        }
+
+        if (empty($_POST['insurance'])) {
+            die (json_encode('Wrong Insurance'));
         }
 
         if (!isset($_POST['franchise'])) {
@@ -53,42 +53,26 @@ class CalculationController extends AbstractController
 
 
         $group = $_POST['group'];
-        $insurance = $_POST['insurance'];
         $carAge = $_POST['carAge'];
+        $insurance = $_POST['insurance'];
         $franchise = $_POST['franchise'];
-
-//        $db = Db::getInstance();
-//        $result = $db->query(
-//            'SELECT `value` FROM `' . static::getTableName() . '`
-//            WHERE `group_id` = :groupId AND `insurance` = :insurance AND `car_age` = :carAge;',
-//            [
-//                ':groupId' => $group,
-//                ':insurance' => $insurance,
-//                ':carAge' => $carAge
-//            ]
-//        );
-//        $baseTariff = $result[0]->value;
 
         $queryAge = ($age > $maxAge) ? $maxAge : $age;
         $queryExperience = ($experience > $maxExperience) ? $maxExperience : $experience;
-        $ageGroup = SQL::findValueByColumn(TABLE_NAME_AGE, 'age_group', 'value', $queryAge);
-        $experienceGroup = SQL::findValueByColumn(TABLE_NAME_EXPERIENCE, 'experience_group', 'value', $queryExperience);
-        $data = SQL::getTariff();
+        $tariff = SQL::getTariff($group, $carAge, $insurance, $franchise, $queryAge, $queryExperience) . ' %';
+        echo json_encode($tariff);
         return;
 
         $baseTariff = BaseTariff::selectTariff($group, $insurance, $carAge);
         $franchiseCoefficient = Franchise::selectCoefficient($franchise, $group);
-
-//        $maxAge = Age::selectMaxAge();
-//        $maxExperience = Experience::selectMaxExperience();
-//        $age = ($age > $maxAge) ? $maxAge : $age;
-//        $experience = ($experience > $maxExperience) ? $maxExperience : $experience;
+        $maxAge = Age::selectMaxAge();
+        $maxExperience = Experience::selectMaxExperience();
+        $age = ($age > $maxAge) ? $maxAge : $age;
+        $experience = ($experience > $maxExperience) ? $maxExperience : $experience;
         $ageGroup = Age::selectAgeGroup($age);
         $experienceGroup = Experience::selectExperienceGroup($experience);
         $ageAndExperienceCoefficient = AgeAndExperienceCoefficient::selectCoefficient($ageGroup, $experienceGroup);
-
-        $data = $baseTariff * $franchiseCoefficient * $ageAndExperienceCoefficient * 100 . ' %';
-
+        $data = $baseTariff * $franchiseCoefficient * $ageAndExperienceCoefficient * 100 . '%';
         echo json_encode($data);
 
 
