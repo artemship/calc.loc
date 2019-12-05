@@ -6,9 +6,9 @@
                 <label for="exampleFormControlSelect1">Марка</label>
                 <select class="form-control" id="js-select-mark">
                     <option value="0">--Выбрать марку--</option>
-                    <?php if (!empty($cars)):
-                        foreach ($cars as $car): ?>
-                            <option value="<?= $car->getMark(); ?>"><?= $car->getMark() ?></option>
+                    <?php if (!empty($marks)):
+                        foreach ($marks as $mark): ?>
+                            <option value="<?= $mark; ?>"><?= $mark ?></option>
                         <? endforeach;
                     endif ?>
                 </select>
@@ -49,7 +49,7 @@
                 <select class="form-control" id="js-select-franchise">
                     <?php if (!empty($franchises)):
                         foreach ($franchises as $franchise): ?>
-                            <option value="<?= $franchise->getValue(); ?>"><?= $franchise->getValue() . ' %' ?></option>
+                            <option value="<?= $franchise; ?>"><?= $franchise . ' %' ?></option>
                         <? endforeach;
                     endif ?>
                 </select>

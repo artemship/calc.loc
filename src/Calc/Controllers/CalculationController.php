@@ -44,10 +44,20 @@ class CalculationController
         $group = $_POST['group'];
         $insurance = $_POST['insurance'];
         $carAge = $_POST['carAge'];
-
-        $baseTariff = BaseTariff::selectTariff($group, $insurance, $carAge);
-
         $franchise = $_POST['franchise'];
+
+//        $db = Db::getInstance();
+//        $result = $db->query(
+//            'SELECT `value` FROM `' . static::getTableName() . '`
+//            WHERE `group_id` = :groupId AND `insurance` = :insurance AND `car_age` = :carAge;',
+//            [
+//                ':groupId' => $group,
+//                ':insurance' => $insurance,
+//                ':carAge' => $carAge
+//            ]
+//        );
+//        $baseTariff = $result[0]->value;
+        $baseTariff = BaseTariff::selectTariff($group, $insurance, $carAge);
         $franchiseCoefficient = Franchise::selectCoefficient($franchise, $group);
 
         $maxAge = Age::selectMaxAge();
