@@ -66,6 +66,17 @@
             </div>
 
             <div class="col-5 form-group">
+                <label for="exampleFormControlSelect1">Срок страхования</label>
+                <select class="form-control " id="js-select-period">
+                    <?php if (!empty($periods)):
+                        foreach ($periods as $key => $period): ?>
+                            <option value="<?= $key; ?>"><?= $period ?></option>
+                        <? endforeach;
+                    endif ?>
+                </select>
+            </div>
+
+            <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1">Тариф</label>
                 <input type="text" id="tariff" disabled>
             </div>

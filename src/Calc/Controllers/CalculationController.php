@@ -33,6 +33,10 @@ class CalculationController extends AbstractController
             die (json_encode('Wrong Franchise'));
         }
 
+        if (!isset($_POST['period'])) {
+            die (json_encode('Wrong Period'));
+        }
+
         $age = preg_match('~^\d+$~', trim($_POST['age'])) ? (int)($_POST['age']) : null;
         $experience = preg_match('~^\d+$~', trim($_POST['experience'])) ? (int)($_POST['experience']) : null;
 
@@ -56,10 +60,11 @@ class CalculationController extends AbstractController
         $carAge = $_POST['carAge'];
         $insurance = $_POST['insurance'];
         $franchise = $_POST['franchise'];
+        $period = (int)$_POST['period'] + 1;
 
         $queryAge = ($age > $maxAge) ? $maxAge : $age;
         $queryExperience = ($experience > $maxExperience) ? $maxExperience : $experience;
-        $tariff = SQL::getTariff($group, $carAge, $insurance, $franchise, $queryAge, $queryExperience) . ' %';
+        $tariff = SQL::getTariff($group, $carAge, $insurance, $franchise, $queryAge, $queryExperience, $period) . ' %';
         echo json_encode($tariff);
         return;
 
@@ -74,8 +79,6 @@ class CalculationController extends AbstractController
         $ageAndExperienceCoefficient = AgeAndExperienceCoefficient::selectCoefficient($ageGroup, $experienceGroup);
         $data = $baseTariff * $franchiseCoefficient * $ageAndExperienceCoefficient * 100 . '%';
         echo json_encode($data);
-
-
     }
 
     public function selectMark()
@@ -97,6 +100,7 @@ class CalculationController extends AbstractController
     {
         $marks = SQL::getValues(TABLE_NAME_MARK, 'mark', true);
         $franchises = SQL::getValues(TABLE_NAME_FRANCHISE, 'value', true);
+        $periods = SQL::getValues(TABLE_NAME_PERIOD, 'value', false);
 
         $options = (require __DIR__ . '/../../settings.php')['calculation'];
         foreach ($options['insurance'] as $key => $option) {
@@ -114,7 +118,8 @@ class CalculationController extends AbstractController
             'marks' => $marks,
             'carsAge' => $carsAge,
             'insurances' => $insurances,
-            'franchises' => $franchises
+            'franchises' => $franchises,
+            'periods' => $periods
         ]);
     }
 

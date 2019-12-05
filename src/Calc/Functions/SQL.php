@@ -8,6 +8,7 @@ define('TABLE_NAME_FRANCHISE', 'franchises');
 define('TABLE_NAME_MARK', 'cars');
 define('TABLE_NAME_AGE', 'age');
 define('TABLE_NAME_EXPERIENCE', 'experience');
+define('TABLE_NAME_PERIOD', 'insurance_period');
 
 class SQL
 {
@@ -42,7 +43,7 @@ class SQL
         return $result[0]->$selectColumn ? $result[0]->$selectColumn : null;
     }
 
-    public static function getTariff(int $group, int $carAge, string $insurance, int $franchise, int $age, int $experience): ?float
+    public static function getTariff(int $group, int $carAge, string $insurance, int $franchise, int $age, int $experience, int $period): ?float
     {
         $db = Db::getInstance();
         $result = $db->query(
@@ -56,6 +57,9 @@ class SQL
                                    LEFT JOIN experience AS e
                                    ON ae.experience_group_id = e.experience_group
                              WHERE a.value = :age AND e.value = :experience)
+                         * (SELECT p.coefficient
+                              FROM insurance_period AS p
+                             WHERE p.id = :period)
                          * 100 AS tariff
                     FROM base_tariffs AS b
                          LEFT JOIN franchises AS f
@@ -71,9 +75,11 @@ class SQL
                 ':insurance' => $insurance,
                 ':carAge' => $carAge,
                 ':franchise' => $franchise,
+                ':period' => $period,
             ]
         );
         return $result[0]->tariff ? $result[0]->tariff : null;
     }
+
 
 }
