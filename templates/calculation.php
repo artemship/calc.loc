@@ -57,12 +57,12 @@
 
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1">Возраст водителя</label>
-                <input type="text" id="js-age" placeholder="Возраст водителя">
+                <input class="form-control" type="text" id="js-age" placeholder="Возраст водителя">
             </div>
 
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1">Стаж</label>
-                <input type="text" id="js-experience" placeholder="Стаж водителя">
+                <input class="form-control" type="text" id="js-experience" placeholder="Стаж водителя">
             </div>
 
             <div class="col-5 form-group">
@@ -76,9 +76,37 @@
                 </select>
             </div>
 
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">
+                    ТС находится на гарантии производителя
+                </label>
+            </div>
+
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">
+                    Отсутствует выплата без справок из компетентных органов (один стеклянный элемент)
+                </label>
+            </div>
+
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">
+                    Отсутствует выплата без справок из компетентных органов (один кузовной элемент)
+                </label>
+            </div>
+
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">
+                    Агрегатная
+                </label>
+            </div>
+
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1">Тариф</label>
-                <input type="text" id="tariff" disabled>
+                <input class="form-control" type="text" id="tariff" disabled>
             </div>
 
             <div class=" col-5 text-right ">
