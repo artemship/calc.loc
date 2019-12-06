@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-<!--          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>
@@ -14,18 +13,11 @@
     </title>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/selectMark.js"></script>
-
-
-
-
-
 </head>
 
 <body>
-
 <hr>
 <section id="form-parameter">
-
     <form>
         <div class="container">
             <div class="col-5 form-group">
@@ -38,18 +30,15 @@
                     <option>5</option>
                 </select>
             </div>
-
             <div class=" col-5 text-right ">
                 <button type="button" class="btn btn-secondary ">Продолжить</button>
             </div>
         </div>
     </form>
-
 </section>
 </br>
 </br>
 <hr>
-
 </br>
 </br>
 <section id="input">
