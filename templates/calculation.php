@@ -57,7 +57,7 @@
 
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1"><b>Возраст водителя</b></label>
-                <input class="form-control" type="text" id="js-age" onchange="nulltariff()">
+                <input class="form-control" type="text" id="js-age" placeholder="Возраст водителя" onchange="nulltariff()">
                 <p class="alert-danger" id="error_v"></p>
 
             </div>
@@ -116,7 +116,6 @@
                     <input type="checkbox" class="form-check-input" value="">
                     Агрегатная
                 </label>
-            </div>
 
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1"><b>Тариф</b></label>

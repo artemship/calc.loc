@@ -99,25 +99,6 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         $db->query($sql, $params2values, static::class);
         $this->id = $db->getLastInsertId();
         $this->refresh();
-//        $mappedPropertiesNotNull = array_filter($mappedProperties);
-//        $columns = [];
-//        $params = [];
-//        $params2values = [];
-//        $index = 1;
-//
-//        foreach ($mappedPropertiesNotNull as $column => $value) {
-//            $param = ':param' . $index;
-//            $columns [] = $column;
-//            $params[] = $param;
-//            $params2values[$param] = $value;
-//            $index++;
-//        }
-//
-//        $sql = 'INSERT INTO ' . static::getTableName() . ' (' .
-//            implode(', ', $columns) . ') ' .
-//            'VALUES ' . '(' . implode(', ', $params) . ');';
-//        $db = Db::getInstance();
-//        $db->query($sql, $params2values, static::class);
     }
 
     private function refresh(): void
@@ -187,26 +168,6 @@ abstract class ActiveRecordEntity implements \JsonSerializable
         return $result;
     }
 
-    public static function getColumn(string $columnName, bool $isDistinct): ?array
-    {
-        $db = Db::getInstance();
-        $distinct = ($isDistinct == true) ? 'DISTINCT' : '';
-        $result = $db->query(
-            'SELECT ' . $distinct . ' `'.$columnName.'` FROM `' . static::getTableName().'`;',
-            [],
-            static::class
-        );
-        if ($result === []) {
-            return null;
-        }
-        return $result;
-    }
-
-    /**
-     * @param int $id
-     * @return static|null
-     */
-
     public static function getById(int $id): ?self
     {
         $db = Db::getInstance();
@@ -216,25 +177,6 @@ abstract class ActiveRecordEntity implements \JsonSerializable
             static::class
         );
         return $entities ? $entities[0] : null;
-    }
-
-    public static function countByColumn(int $value, string $columnName): ?int
-    {
-//        SELECT COUNT(author_id) FROM `articles` WHERE author_id = 4;
-//        SELECT COUNT(author_id) FROM articles WHERE author_id=1
-//        SELECT COUNT(`author_id`) FROM `articles` WHERE `author_id` = 4
-        $db = Db::getInstance();
-        $str = 'SELECT (`' . $columnName . '`) FROM `' . static::getTableName() .
-            '` WHERE `' . $columnName . '` = :value;';
-        $result = $db->query(
-            $str,
-            [':value' => $value],
-            static::class
-        );
-        if ($result === []) {
-            return null;
-        }
-        return count($result);
     }
 
     abstract protected static function getTableName(): string;

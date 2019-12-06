@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="www/style.css" type="text/css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+<!--          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>
@@ -16,7 +17,7 @@
 
 
 
- 
+
 
 </head>
 
@@ -38,54 +39,8 @@
                 </select>
             </div>
 
-            <div class="col-5 form-group">
-                <label for="exampleFormControlSelect1">Параметр 2</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-
-            <div class="col-5 form-group">
-                <label for="exampleFormControlSelect1">Параметр 3</label>
-                <select class="form-control " id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-
-            <div class="col-5 form-group">
-                <label for="exampleFormControlSelect1">Параметр 4</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-
-            <div class="col-5 form-group">
-                <label for="exampleFormControlSelect1">Параметр 5</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-
             <div class=" col-5 text-right ">
                 <button type="button" class="btn btn-secondary ">Продолжить</button>
-
-
             </div>
         </div>
     </form>
@@ -110,7 +65,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-user-check"></i></div>
                         </div>
-                        
+
                         <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Логин">
                     </div>
                 </div>
@@ -123,7 +78,7 @@
 
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-key"></i></div>
-                            
+
                         </div>
                         <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Пароль">
                     </div>
@@ -132,104 +87,44 @@
                 <div class="col-auto">
                 </div>
 
-               
-                    <button type="submit" class="btn btn-secondary mb-2">Войти</button>
-                </div>
-            
+
+                <button type="submit" class="btn btn-secondary mb-2">Войти</button>
+            </div>
+
     </div>
     </form>
 
-</div>
+    </div>
 </section>
 <hr>
 <section id="check">
     <div class="container">
 
 
-    <div class="col-5 form-group">
-                <label for="exampleFormControlSelect1">Параметр 1</label>
-                <select class="form-control js-select-mark" id="exampleFormControlSelect1">
+        <div class="col-5 form-group">
+            <label for="exampleFormControlSelect1">Параметр 1</label>
+            <select class="form-control js-select-mark" id="exampleFormControlSelect1">
                 <option value="0">--Выбрать марку--</option>
-                </select>
-            </div>
+            </select>
+        </div>
 
-            <div class="col-5 form-group">
-                <label for="exampleFormControlSelect1">Параметр 2</label>
-                <select class="form-control js-select-mark" id="exampleFormControlSelect1">
-                <option value="0">--Выбрать марку--</option>
-                </select>
-            </div>
-
-            <div class="col-5 form-group">
-                <label for="exampleFormControlSelect1">Параметр 3</label>
-                <select class="form-control js-select-mark " id="exampleFormControlSelect1">
-                <option value="0">--Выбрать марку--</option>
-                </select>
-            </div>
-
-            </br>
-            <div class="col-5">
+        </br>
+        <div class="col-5">
             <input class="form-control" type="text" placeholder="Ваш текст">
 
             </br>
 
             <input class="form-control" type="text" placeholder="Ваш текст">
-            </div>
+        </div>
+        </br>
 
-            </br>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" value="">Параметр 1
+            </label>
+        </div>
 
-
-
-
-
-
-
-
-            <div class="col-5 form-group ">
-                <label for="exampleFormControlSelect1">Параметр 1</label>
-                <select class="form-control js-select-mark" id="exampleFormControlSelect1">
-                <option value="0">--Выбрать марку--</option>
-                </select>
-            </div>
-
-            <div class="col-5 form-group">
-                <label for="exampleFormControlSelect1">Параметр 2</label>
-                <select class="form-control js-select-mark" id="exampleFormControlSelect1">
-                <option value="0">--Выбрать марку--</option>
-                   
-                </select>
-            </div>
-
-
-
-
-<div class="form-check">
-  <label class="form-check-label">
-    <input type="checkbox" class="form-check-input" value="">Параметр 1
-  </label>
-</div>
-<div class="form-check">
-  <label class="form-check-label">
-    <input type="checkbox" class="form-check-input" value="">Параметр 2
-  </label>
-</div>
-<div class="form-check">
-  <label class="form-check-label">
-    <input type="checkbox" class="form-check-input" value="">Параметр 3
-  </label>
-</div>
-<div class="form-check">
-  <label class="form-check-label">
-    <input type="checkbox" class="form-check-input" value="">Параметр 4
-  </label>
-</div>
-<div class="form-check">
-  <label class="form-check-label">
-    <input type="checkbox" class="form-check-input" value="">Параметр 5
-  </label>
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -241,7 +136,6 @@
 <br>
 <br>
 <br>
-
 
 
 <br>

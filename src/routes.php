@@ -1,7 +1,7 @@
 <?php
 
 return [
-    '~^$~' => [\Calc\Controllers\MainController::class, 'main'],
+    '~^$~' => [\Calc\Controllers\CalculationController::class, 'calculation'],
     '~^ajax/btn/submit$~' => [\Calc\Controllers\CalculationController::class, 'submit'],
     '~^ajax/select/mark$~' => [\Calc\Controllers\CalculationController::class, 'selectMark'],
 //    '~^articles/(\d+)/comments/(\d+)/delete$~' => [\MyProject\Controllers\CommentsController::class, 'delete'],

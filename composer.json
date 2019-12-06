@@ -13,5 +13,7 @@
             "Calc\\": "src/Calc/"
         }
     },
-    "require": {}
+    "require": {
+      "ext-json": "*"
+    }
 }
