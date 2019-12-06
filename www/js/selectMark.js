@@ -41,6 +41,13 @@ $(function () {
         var franchise = $("#js-select-franchise").val();
         var age = $("#js-age").val();
         var experience = $("#js-experience").val();
+        var period = $("#js-select-period").val();
+        var paymentProcedure = $("#js-select-payment-procedure").val();
+        var isWarranty = false;
+        var noGlassPayment = false;
+        var noBodyPayment = false;
+        var isAggregate = false;
+
         if (mark == 0) {
             $("#tariff").val('Выберите марку');
             return;
@@ -48,7 +55,7 @@ $(function () {
         if (age < 18) {
            //$("#js-age").val('Возраст должен быть больше 18 лет!');
 
-             
+
                 document.getElementById("error_v").innerHTML="Возраст должен быть больше 18 лет!";
                 document.getElementById("js-age").style.borderColor = "#AA0000";
                 document.getElementById("error_v").style.fontFamily = "cursive";
@@ -66,19 +73,26 @@ $(function () {
                 else {
                     document.getElementById("error_s").innerHTML=null;
                     document.getElementById("js-experience").style.borderColor = null;
-                    
-           //$("#js-experience").val('Стаж указан неверно, проверьте введенные данные!'); 
+
+           //$("#js-experience").val('Стаж указан неверно, проверьте введенные данные!');
         }
         $.ajax({
-            type: 'POST',
             url: '/ajax/btn/submit',
+            type: 'POST',
+            dataType: 'JSON',
             data: {
                 group: group,
                 carAge: carAge,
                 insurance: insurance,
                 franchise: franchise,
                 age: age,
-                experience: experience
+                experience: experience,
+                period: period,
+                paymentProcedure: paymentProcedure,
+                isWarranty: isWarranty,
+                noGlassPayment: noGlassPayment,
+                noBodyPayment: noBodyPayment,
+                isAggregate: isAggregate
             },
             success: function (data) {
                 $("#tariff").val(data);

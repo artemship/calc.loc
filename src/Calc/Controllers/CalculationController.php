@@ -2,6 +2,7 @@
 
 namespace Calc\Controllers;
 
+use Calc\Functions\SQL;
 use Calc\Models\Calculation\Age;
 use Calc\Models\Calculation\AgeAndExperienceCoefficient;
 use Calc\Models\Calculation\BaseTariff;
@@ -9,47 +10,85 @@ use Calc\Models\Calculation\Experience;
 use Calc\Models\Calculation\Franchise;
 use Calc\Services\Db;
 
-class CalculationController
+class CalculationController extends AbstractController
 {
     public function submit()
     {
-        if (!empty($_POST['group']) && !empty($_POST['insurance']) && isset($_POST['carAge'])) {
-            $group = $_POST['group'];
-            $insurance = $_POST['insurance'];
-            $carAge = $_POST['carAge'];
+        static $maxAge = 0;
+        static $maxExperience = 0;
 
-            $baseTariff = BaseTariff::selectTariff($group, $insurance, $carAge);
+        if (empty($_POST['group'])) {
+            die (json_encode('Wrong Mark/Model'));
         }
 
-        if (!isset($baseTariff)) {
-            echo 0;
-            return;
+        if (!isset($_POST['carAge'])) {
+            die (json_encode('Wrong Car Age'));
         }
 
-        if (isset($_POST['franchise'])) {
-            $franchise = $_POST['franchise'];
-            $franchiseCoefficient = Franchise::selectCoefficient($franchise, $group);
+        if (empty($_POST['insurance'])) {
+            die (json_encode('Wrong Insurance'));
         }
 
-        if (!empty($_POST['age']) && !empty($_POST['experience'])) {
-            $age = $_POST['age'];
-            $experience = $_POST['experience'];
-            if ($age - $experience < 18) {
-                echo 0;
-                return;
-            }
-            $maxAge = Age::selectMaxAge();
-            $maxExperience = Experience::selectMaxExperience();
-            $age = ($age > $maxAge) ? $maxAge : $age;
-            $experience = ($experience > $maxExperience) ? $maxExperience : $experience;
-            $ageGroup = Age::selectAgeGroup($age);
-            $experienceGroup = Experience::selectExperienceGroup($experience);
-            $ageAndExperienceCoefficient = AgeAndExperienceCoefficient::selectCoefficient($ageGroup, $experienceGroup);
+        if (!isset($_POST['franchise'])) {
+            die (json_encode('Wrong Franchise'));
         }
 
-        echo $baseTariff * $franchiseCoefficient * $ageAndExperienceCoefficient * 100 . ' %';
+        if (!isset($_POST['period'])) {
+            die (json_encode('Wrong Period'));
+        }
+
+        if (!isset($_POST['paymentProcedure'])) {
+            die (json_encode('Wrong Payment Procedure'));
+        }
+
+        $age = preg_match('~^\d+$~', trim($_POST['age'])) ? (int)($_POST['age']) : null;
+        $experience = preg_match('~^\d+$~', trim($_POST['experience'])) ? (int)($_POST['experience']) : null;
+
+        if ($age < 18) {
+            die (json_encode('Wrong Age'));
+        }
+
+        if (is_null($experience) || $age - $experience < 18) {
+            die (json_encode('Wrong Experience'));
+        }
+
+        if ($maxAge === 0) {
+            $maxAge = SQL::findMax(TABLE_NAME_AGE, 'value');
+        }
+        if ($maxExperience === 0) {
+            $maxExperience = SQL::findMax(TABLE_NAME_EXPERIENCE, 'value');
+        }
 
 
+        $group = $_POST['group'];
+        $carAge = $_POST['carAge'];
+        $insurance = $_POST['insurance'];
+        $franchise = $_POST['franchise'];
+        $period = (int)$_POST['period'] + 1;
+        $paymentProcedure = (float)$_POST['paymentProcedure'];
+        $cWarranty = ($_POST['isWarranty'] == true) ? 1.15 : 1.6;
+        $cGlassPayment = ($_POST['noGlassPayment'] == true) ? 0.97 : 1;
+        $cBodyPayment = ($_POST['noBodyPayment'] == true) ? 0.97 : 1;
+        $cAggregate = ($_POST['isAggregate'] == true) ? 0.96 :1;
+
+        $queryAge = ($age > $maxAge) ? $maxAge : $age;
+        $queryExperience = ($experience > $maxExperience) ? $maxExperience : $experience;
+        $tariff = SQL::getTariff($group, $carAge, $insurance, $franchise, $queryAge, $queryExperience, $period);
+        $data = $tariff * $paymentProcedure * $cWarranty * $cGlassPayment * $cBodyPayment * $cAggregate . ' %';
+        echo json_encode($data);
+        return;
+
+        $baseTariff = BaseTariff::selectTariff($group, $insurance, $carAge);
+        $franchiseCoefficient = Franchise::selectCoefficient($franchise, $group);
+        $maxAge = Age::selectMaxAge();
+        $maxExperience = Experience::selectMaxExperience();
+        $age = ($age > $maxAge) ? $maxAge : $age;
+        $experience = ($experience > $maxExperience) ? $maxExperience : $experience;
+        $ageGroup = Age::selectAgeGroup($age);
+        $experienceGroup = Experience::selectExperienceGroup($experience);
+        $ageAndExperienceCoefficient = AgeAndExperienceCoefficient::selectCoefficient($ageGroup, $experienceGroup);
+        $data = $baseTariff * $franchiseCoefficient * $ageAndExperienceCoefficient * 100 . '%';
+        echo json_encode($data);
     }
 
     public function selectMark()
@@ -65,6 +104,37 @@ class CalculationController
                 echo '<option value="' . $entity->group . '">' . $entity->model . '</option>';
             }
         }
+    }
+
+    public function calculation()
+    {
+        $marks = SQL::getValues(TABLE_NAME_MARK, 'mark', true);
+        $franchises = SQL::getValues(TABLE_NAME_FRANCHISE, 'value', true);
+        $periods = SQL::getValues(TABLE_NAME_PERIOD, 'value', false);
+
+        $options = (require __DIR__ . '/../../settings.php')['calculation'];
+        foreach ($options['insurance'] as $key => $option) {
+            $insurances[$key] = $option;
+        }
+        foreach ($options['paymentProcedure'] as $key => $option) {
+            $paymentProcedures[$key] = $option;
+        }
+//        foreach ($options['franchise'] as $option) {
+//            $franchises[] = $option;
+//        }
+
+        for ($i = 0; $i <= 6; $i++) {
+            $carsAge[$i] = (string)((int)(date('Y') - $i));
+        }
+
+        $this->view->renderHtml('main.php', [
+            'marks' => $marks,
+            'carsAge' => $carsAge,
+            'insurances' => $insurances,
+            'franchises' => $franchises,
+            'periods' => $periods,
+            'paymentProcedures' => $paymentProcedures
+        ]);
     }
 
 }

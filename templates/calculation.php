@@ -2,14 +2,13 @@
 
     <form>
         <div class="container">
-            
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1"><b>Марка</b></label>
                 <select class="form-control" id="js-select-mark" onchange="nulltariff()">
                     <option value="0">--Выбрать марку--</option>
-                    <?php if (!empty($cars)):
-                        foreach ($cars as $car): ?>
-                            <option value="<?= $car->getMark(); ?>"><?= $car->getMark() ?></option>
+                    <?php if (!empty($marks)):
+                        foreach ($marks as $mark): ?>
+                            <option value="<?= $mark; ?>"><?= $mark ?></option>
                         <? endforeach;
                     endif ?>
                 </select>
@@ -50,7 +49,7 @@
                 <select class="form-control" id="js-select-franchise" onchange="nulltariff()">
                     <?php if (!empty($franchises)):
                         foreach ($franchises as $franchise): ?>
-                            <option value="<?= $franchise->getValue(); ?>"><?= $franchise->getValue() . ' %' ?></option>
+                            <option value="<?= $franchise; ?>"><?= $franchise . ' %' ?></option>
                         <? endforeach;
                     endif ?>
                 </select>
@@ -67,6 +66,56 @@
                 <label for="exampleFormControlSelect1"><b>Стаж</b></label>
                 <input class="form-control" type="text" id="js-experience" onchange="nulltariff()">
                 <p class="alert-danger" id="error_s"></p>
+            </div>
+
+            <div class="col-5 form-group">
+                <label for="exampleFormControlSelect1">Срок страхования</label>
+                <select class="form-control " id="js-select-period">
+                    <?php if (!empty($periods)):
+                        foreach ($periods as $key => $period): ?>
+                            <option value="<?= $key; ?>"><?= $period ?></option>
+                        <? endforeach;
+                    endif ?>
+                </select>
+            </div>
+
+            <div class="col-5 form-group">
+                <label for="exampleFormControlSelect1">Порядок оплаты страховой премии</label>
+                <select class="form-control " id="js-select-payment-procedure">
+                    <?php if (!empty($paymentProcedures)):
+                        foreach ($paymentProcedures as $key => $option): ?>
+                            <option value="<?= $key; ?>"><?= $option ?></option>
+                        <? endforeach;
+                    endif ?>
+                </select>
+            </div>
+
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">
+                    ТС находится на гарантии производителя
+                </label>
+            </div>
+
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">
+                    Отсутствует выплата без справок из компетентных органов (один стеклянный элемент)
+                </label>
+            </div>
+
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">
+                    Отсутствует выплата без справок из компетентных органов (один кузовной элемент)
+                </label>
+            </div>
+
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">
+                    Агрегатная
+                </label>
             </div>
 
             <div class="col-5 form-group">
