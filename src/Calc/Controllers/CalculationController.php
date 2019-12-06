@@ -37,6 +37,10 @@ class CalculationController extends AbstractController
             die (json_encode('Wrong Period'));
         }
 
+        if (!isset($_POST['paymentProcedure'])) {
+            die (json_encode('Wrong Payment Procedure'));
+        }
+
         $age = preg_match('~^\d+$~', trim($_POST['age'])) ? (int)($_POST['age']) : null;
         $experience = preg_match('~^\d+$~', trim($_POST['experience'])) ? (int)($_POST['experience']) : null;
 
@@ -61,11 +65,17 @@ class CalculationController extends AbstractController
         $insurance = $_POST['insurance'];
         $franchise = $_POST['franchise'];
         $period = (int)$_POST['period'] + 1;
+        $paymentProcedure = (float)$_POST['paymentProcedure'];
+        $cWarranty = ($_POST['isWarranty'] == true) ? 1.15 : 1.6;
+        $cGlassPayment = ($_POST['noGlassPayment'] == true) ? 0.97 : 1;
+        $cBodyPayment = ($_POST['noBodyPayment'] == true) ? 0.97 : 1;
+        $cAggregate = ($_POST['isAggregate'] == true) ? 0.96 :1;
 
         $queryAge = ($age > $maxAge) ? $maxAge : $age;
         $queryExperience = ($experience > $maxExperience) ? $maxExperience : $experience;
-        $tariff = SQL::getTariff($group, $carAge, $insurance, $franchise, $queryAge, $queryExperience, $period) . ' %';
-        echo json_encode($tariff);
+        $tariff = SQL::getTariff($group, $carAge, $insurance, $franchise, $queryAge, $queryExperience, $period);
+        $data = $tariff * $paymentProcedure * $cWarranty * $cGlassPayment * $cBodyPayment * $cAggregate . ' %';
+        echo json_encode($data);
         return;
 
         $baseTariff = BaseTariff::selectTariff($group, $insurance, $carAge);
@@ -106,6 +116,9 @@ class CalculationController extends AbstractController
         foreach ($options['insurance'] as $key => $option) {
             $insurances[$key] = $option;
         }
+        foreach ($options['paymentProcedure'] as $key => $option) {
+            $paymentProcedures[$key] = $option;
+        }
 //        foreach ($options['franchise'] as $option) {
 //            $franchises[] = $option;
 //        }
@@ -119,7 +132,8 @@ class CalculationController extends AbstractController
             'carsAge' => $carsAge,
             'insurances' => $insurances,
             'franchises' => $franchises,
-            'periods' => $periods
+            'periods' => $periods,
+            'paymentProcedures' => $paymentProcedures
         ]);
     }
 

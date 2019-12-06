@@ -76,6 +76,17 @@
                 </select>
             </div>
 
+            <div class="col-5 form-group">
+                <label for="exampleFormControlSelect1">Порядок оплаты страховой премии</label>
+                <select class="form-control " id="js-select-payment-procedure">
+                    <?php if (!empty($paymentProcedures)):
+                        foreach ($paymentProcedures as $key => $option): ?>
+                            <option value="<?= $key; ?>"><?= $option ?></option>
+                        <? endforeach;
+                    endif ?>
+                </select>
+            </div>
+
             <div class="form-check">
                 <label class="form-check-label">
                     <input type="checkbox" class="form-check-input" value="">

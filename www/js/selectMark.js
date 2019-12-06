@@ -42,6 +42,11 @@ $(function () {
         var age = $("#js-age").val();
         var experience = $("#js-experience").val();
         var period = $("#js-select-period").val();
+        var paymentProcedure = $("#js-select-payment-procedure").val();
+        var isWarranty = false;
+        var noGlassPayment = false;
+        var noBodyPayment = false;
+        var isAggregate = false;
         // if (mark == 0) {
         //     $("#tariff").val('Выберите марку');
         //     return;
@@ -57,7 +62,12 @@ $(function () {
                 franchise: franchise,
                 age: age,
                 experience: experience,
-                period: period
+                period: period,
+                paymentProcedure: paymentProcedure,
+                isWarranty: isWarranty,
+                noGlassPayment: noGlassPayment,
+                noBodyPayment: noBodyPayment,
+                isAggregate: isAggregate
             },
             success: function (data) {
                 $("#tariff").val(data);
