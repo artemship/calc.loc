@@ -66,10 +66,10 @@ class CalculationController extends AbstractController
         $franchise = $_POST['franchise'];
         $period = (int)$_POST['period'] + 1;
         $paymentProcedure = (float)$_POST['paymentProcedure'];
-        $cWarranty = ($_POST['isWarranty'] == true) ? 1.15 : 1.6;
-        $cGlassPayment = ($_POST['noGlassPayment'] == true) ? 0.97 : 1;
-        $cBodyPayment = ($_POST['noBodyPayment'] == true) ? 0.97 : 1;
-        $cAggregate = ($_POST['isAggregate'] == true) ? 0.96 :1;
+        $cWarranty = ((int)$_POST['isWarranty'] == 1) ? 1.15 : 1.6;
+        $cGlassPayment = ((int)$_POST['noGlassPayment'] == 1) ? 0.97 : 1;
+        $cBodyPayment = ((int)$_POST['noBodyPayment'] == 1) ? 0.97 : 1;
+        $cAggregate = ((int)$_POST['isAggregate'] == 1) ? 0.96 :1;
 
         $queryAge = ($age > $maxAge) ? $maxAge : $age;
         $queryExperience = ($experience > $maxExperience) ? $maxExperience : $experience;

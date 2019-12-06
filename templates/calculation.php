@@ -64,7 +64,7 @@
 
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1"><b>Стаж</b></label>
-                <input class="form-control" type="text" id="js-experience" onchange="nulltariff()">
+                <input class="form-control" type="text" id="js-experience" placeholder="Стаж" onchange="nulltariff()">
                 <p class="alert-danger" id="error_s"></p>
             </div>
 
