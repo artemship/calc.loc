@@ -35,6 +35,7 @@ $(function () {
     });
     $("#js-btn-submit").click(function () {
         var mark = $("#js-select-mark").val();
+        var model = $("#js-select-model option:selected").text();
         var group = $("#js-select-model").val();
         var carAge = $("#js-select-car-age").val();
         var insurance = $("#js-select-insurance").val();
@@ -72,50 +73,61 @@ $(function () {
         }
 
 
-     /*   var check_arr=["customCheck1","customCheck2","customCheck3","customCheck4"];
+        /*   var check_arr=["customCheck1","customCheck2","customCheck3","customCheck4"];
 
-        for (i=0; i<check_arr.length)
-        
+           for (i=0; i<check_arr.length)
+
+
+           if (customCheck1.checked) {
+               isWarranty=document.getElementById("customCheck1").value=1;
+           }   else {
+               isWarranty=document.getElementById("customCheck1").value=0;
+           }*/
+
+        /*Ок, все работает, красава!) Но в данном случае можно упростить вот так:
+
+          if (customCheck1.checked) {
+            isWarranty = 1;
+          }
+
+          else тут вообще не нужен, т.к. выше мы инициализируем переменную isWarranty и по умолчанию присваиваем 0.
+          И только в случае проверки на customCheck1.checked, нам нужно изменить isWarranty на 1.
+          Так же в данном случае не обязательно присваивать document.getElementById("customCheck1").value = 1. Об этом
+          потом по телефону поговорим)
+          Короче молодец, с точки зрения js все правильно сделал)
+        * */
 
         if (customCheck1.checked) {
-            isWarranty=document.getElementById("customCheck1").value=1;
-        }   else {
-            isWarranty=document.getElementById("customCheck1").value=0;
-        }*/
-
-
-        if (customCheck1.checked) {
-            isWarranty=document.getElementById("customCheck1").value=1;
-        }   else {
-            isWarranty=document.getElementById("customCheck1").value=0;
+            isWarranty = document.getElementById("customCheck1").value = 1;
+        } else {
+            isWarranty = document.getElementById("customCheck1").value = 0;
         }
 
         if (customCheck2.checked) {
-            noGlassPayment=document.getElementById("customCheck2").value=1;
-        }
-            else {
-            noGlassPayment=document.getElementById("customCheck2").value=0;
+            noGlassPayment = document.getElementById("customCheck2").value = 1;
+        } else {
+            noGlassPayment = document.getElementById("customCheck2").value = 0;
         }
 
         if (customCheck3.checked) {
-            noBodyPayment=document.getElementById("customCheck3").value=1;
-        }
-             else {
-            noBodyPayment=document.getElementById("customCheck3").value=0;
+            noBodyPayment = document.getElementById("customCheck3").value = 1;
+        } else {
+            noBodyPayment = document.getElementById("customCheck3").value = 0;
         }
 
         if (customCheck4.checked) {
-            isAggregate=document.getElementById("customCheck4").value=1;
-         }
-            else {
-            isAggregate=document.getElementById("customCheck4").value=0;
-         }
+            isAggregate = document.getElementById("customCheck4").value = 1;
+        } else {
+            isAggregate = document.getElementById("customCheck4").value = 0;
+        }
 
         $.ajax({
             url: '/ajax/btn/submit',
             type: 'POST',
             dataType: 'JSON',
             data: {
+                mark: mark,
+                model: model,
                 group: group,
                 carAge: carAge,
                 insurance: insurance,

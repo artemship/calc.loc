@@ -60,6 +60,8 @@ class CalculationController extends AbstractController
         }
 
 
+        $mark = $_POST['mark'];
+        $model = $_POST['model'];
         $group = $_POST['group'];
         $carAge = $_POST['carAge'];
         $insurance = $_POST['insurance'];
@@ -69,12 +71,14 @@ class CalculationController extends AbstractController
         $cWarranty = ((int)$_POST['isWarranty'] == 1) ? 1.15 : 1.6;
         $cGlassPayment = ((int)$_POST['noGlassPayment'] == 1) ? 0.97 : 1;
         $cBodyPayment = ((int)$_POST['noBodyPayment'] == 1) ? 0.97 : 1;
-        $cAggregate = ((int)$_POST['isAggregate'] == 1) ? 0.96 :1;
+        $cAggregate = ((int)$_POST['isAggregate'] == 1) ? 0.96 : 1;
 
         $queryAge = ($age > $maxAge) ? $maxAge : $age;
         $queryExperience = ($experience > $maxExperience) ? $maxExperience : $experience;
         $tariff = SQL::getTariff($group, $carAge, $insurance, $franchise, $queryAge, $queryExperience, $period);
-        $data = $tariff * $paymentProcedure * $cWarranty * $cGlassPayment * $cBodyPayment * $cAggregate . ' %';
+        $adjustingCar = SQL::getAdjustingCar($mark, $model);
+        $adjustingCar = (is_null($adjustingCar)) ? 1 : $adjustingCar;
+        $data = $tariff * $paymentProcedure * $cWarranty * $cGlassPayment * $cBodyPayment * $cAggregate * $adjustingCar . ' %';
         echo json_encode($data);
         return;
 

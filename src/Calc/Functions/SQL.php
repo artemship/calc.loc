@@ -9,6 +9,7 @@ define('TABLE_NAME_MARK', 'cars');
 define('TABLE_NAME_AGE', 'age');
 define('TABLE_NAME_EXPERIENCE', 'experience');
 define('TABLE_NAME_PERIOD', 'insurance_period');
+define('TABLE_NAME_ADJUSTING_CARS', 'adjusting_cars');
 
 class SQL
 {
@@ -41,6 +42,17 @@ class SQL
             [':value' => $value]
         );
         return $result[0]->$selectColumn ? $result[0]->$selectColumn : null;
+    }
+
+    public static function getAdjustingCar(string $mark, string $model): ?float
+    {
+        $value = $mark . ' ' . $model;
+        $db = Db::getInstance();
+        $result = $db->query(
+            'SELECT `coefficient` FROM `' . TABLE_NAME_ADJUSTING_CARS . '` WHERE `value` = :value;',
+            [':value' => $value]
+        );
+        return $result[0]->coefficient ? $result[0]->coefficient : null;
     }
 
     public static function getTariff(int $group, int $carAge, string $insurance, int $franchise, int $age, int $experience, int $period): ?float
