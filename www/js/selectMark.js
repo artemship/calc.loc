@@ -70,6 +70,47 @@ $(function () {
             document.getElementById("js-experience").style.borderColor = null;
             //$("#js-experience").val('Стаж указан неверно, проверьте введенные данные!');
         }
+
+
+     /*   var check_arr=["customCheck1","customCheck2","customCheck3","customCheck4"];
+
+        for (i=0; i<check_arr.length)
+        
+
+        if (customCheck1.checked) {
+            isWarranty=document.getElementById("customCheck1").value=1;
+        }   else {
+            isWarranty=document.getElementById("customCheck1").value=0;
+        }*/
+
+
+        if (customCheck1.checked) {
+            isWarranty=document.getElementById("customCheck1").value=1;
+        }   else {
+            isWarranty=document.getElementById("customCheck1").value=0;
+        }
+
+        if (customCheck2.checked) {
+            noGlassPayment=document.getElementById("customCheck2").value=1;
+        }
+            else {
+            noGlassPayment=document.getElementById("customCheck2").value=0;
+        }
+
+        if (customCheck3.checked) {
+            noBodyPayment=document.getElementById("customCheck3").value=1;
+        }
+             else {
+            noBodyPayment=document.getElementById("customCheck3").value=0;
+        }
+
+        if (customCheck4.checked) {
+            isAggregate=document.getElementById("customCheck4").value=1;
+         }
+            else {
+            isAggregate=document.getElementById("customCheck4").value=0;
+         }
+
         $.ajax({
             url: '/ajax/btn/submit',
             type: 'POST',
@@ -102,3 +143,4 @@ $(function () {
 function nulltariff() {
     document.getElementById("tariff").value = '';
 }
+

@@ -90,30 +90,32 @@
                 </select>
             </div>
 
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" value="">
-                    ТС находится на гарантии производителя
+            <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" value="" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">
+                                        ТС находится на гарантии производителя
                 </label>
             </div>
 
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" value="">
-                    Отсутствует выплата без справок из компетентных органов (один стеклянный элемент)
+            <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" value="" id="customCheck2">
+                <label class="custom-control-label" for="customCheck2">
+                        Отсутствует выплата без справок из компетентных органов (один стеклянный элемент)
                 </label>
             </div>
 
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" value="">
+            <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" value="" id="customCheck3">
+                <label class="custom-control-label" for="customCheck3">
+                    
                     Отсутствует выплата без справок из компетентных органов (один кузовной элемент)
                 </label>
             </div>
 
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" value="">
+            <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" value="" id="customCheck4">
+                <label class="custom-control-label" for="customCheck4">
+                    
                     Агрегатная
                 </label>
 
