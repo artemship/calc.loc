@@ -44,6 +44,7 @@ $(function () {
         var experience = $("#js-experience").val();
         var period = $("#js-select-period").val();
         var paymentProcedure = $("#js-select-payment-procedure").val();
+        var insuranceSum = $("#js-insurance-sum").val();
         var isWarranty = 0;
         var noGlassPayment = 0;
         var noBodyPayment = 0;
@@ -136,6 +137,7 @@ $(function () {
                 experience: experience,
                 period: period,
                 paymentProcedure: paymentProcedure,
+                insuranceSum: insuranceSum,
                 isWarranty: isWarranty,
                 noGlassPayment: noGlassPayment,
                 noBodyPayment: noBodyPayment,

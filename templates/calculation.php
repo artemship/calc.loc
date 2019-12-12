@@ -90,6 +90,12 @@
                 </select>
             </div>
 
+            <div class="col-5 form-group">
+                <label for="exampleFormControlSelect1"><b>Страховая сумма</b></label>
+                <input class="form-control" type="text" id="js-insurance-sum" placeholder="Страховая сумма" value="1100000">
+                <p class="alert-danger" id="error_s"></p>
+            </div>
+
             <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" value="" id="customCheck1">
                 <label class="custom-control-label" for="customCheck1">

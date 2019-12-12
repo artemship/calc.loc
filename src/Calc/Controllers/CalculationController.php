@@ -62,12 +62,13 @@ class CalculationController extends AbstractController
 
         $mark = $_POST['mark'];
         $model = $_POST['model'];
-        $group = $_POST['group'];
-        $carAge = $_POST['carAge'];
+        $group = (int)$_POST['group'];
+        $carAge = (int)$_POST['carAge'];
         $insurance = $_POST['insurance'];
-        $franchise = $_POST['franchise'];
+        $franchise = (int)$_POST['franchise'];
         $period = (int)$_POST['period'] + 1;
         $paymentProcedure = (float)$_POST['paymentProcedure'];
+        $insuranceSum = (int)$_POST['insuranceSum'];
         $cWarranty = ((int)$_POST['isWarranty'] == 1) ? 1.15 : 1.6;
         $cGlassPayment = ((int)$_POST['noGlassPayment'] == 1) ? 0.97 : 1;
         $cBodyPayment = ((int)$_POST['noBodyPayment'] == 1) ? 0.97 : 1;
@@ -78,7 +79,23 @@ class CalculationController extends AbstractController
         $tariff = SQL::getTariff($group, $carAge, $insurance, $franchise, $queryAge, $queryExperience, $period);
         $adjustingCar = SQL::getAdjustingCar($mark, $model);
         $adjustingCar = (is_null($adjustingCar)) ? 1 : $adjustingCar;
-        $data = $tariff * $paymentProcedure * $cWarranty * $cGlassPayment * $cBodyPayment * $cAggregate * $adjustingCar . ' %';
+        $tariff = $tariff * $adjustingCar * $paymentProcedure * $cWarranty * $cGlassPayment * $cBodyPayment * $cAggregate;
+
+        if ($franchise >= 10 && $model != 'Rio' && $model != 'Solaris') {
+            $minTariff = 0.024190641;
+        } elseif (($franchise >= 7 && $franchise < 10) || ($franchise >= 10 && ($model === 'Solaris' || $model === 'Rio'))) {
+            $minTariff = 0.026693121;
+        } else
+            $minTariff = 0.029195601;
+
+        if ($tariff < $minTariff) {
+            $data = round($minTariff * 1.2, 2) . ' %';
+        } elseif ($tariff * $insuranceSum / 100 < 34501) {
+            $data = round(34500 / $insuranceSum * 100 * 1.2, 2) . ' %';
+        } else
+            $data = round($tariff * 1.2, 2) . ' %';
+
+//        $data = round((($tariff < $minTariff) ? $minTariff : $tariff) * 1.2, 2) . ' %';
         echo json_encode($data);
         return;
 
