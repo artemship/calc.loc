@@ -144,7 +144,7 @@
 
 </div>            
 
-            <div class=" col-10 text-right ">
+            <div class=" col-12 text-right ">
                 <button type="button" class="btn btn-secondary" id="js-btn-submit">Рассчитать</button>
             </div>
             </div>
