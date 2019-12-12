@@ -118,7 +118,10 @@
 </section>
 
 <hr>
-
+<div class="col-5 form-group">
+<input type="text" name="referal" placeholder="Живой поиск" value="" class="who"  autocomplete="off">
+    <ul class="search_result"></ul>
+</div>
 
 <br>
 <br>
