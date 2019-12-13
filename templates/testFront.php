@@ -11,8 +11,8 @@
     <title>
         Тестовая страница
     </title>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/selectMark.js"></script>
+<!--    <script type="text/javascript" src="js/jquery.js"></script>-->
+<!--    <script type="text/javascript" src="js/selectMark.js"></script>-->
 </head>
 
 <body>
@@ -55,7 +55,7 @@
                             <div class="input-group-text"><i class="fas fa-user-check"></i></div>
                         </div>
 
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Логин">
+                        <input type="text" class="form-control" id="inlineLogin" placeholder="Логин">
                     </div>
                 </div>
 
@@ -69,7 +69,7 @@
                             <div class="input-group-text"><i class="fas fa-key"></i></div>
 
                         </div>
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Пароль">
+                        <input type="text" class="form-control" id="inlinePassword" placeholder="Пароль">
                     </div>
                 </div>
 

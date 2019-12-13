@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Связанные списки</title>
+    <title>Калькулятор</title>
     <!-- подключаем jquery -->
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/selectMark.js"></script>

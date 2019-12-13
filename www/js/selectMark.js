@@ -1,5 +1,6 @@
+
 $(function () {
-    var mark = $("#js-select-mark").val();
+    // var mark = $("#js-select-mark").val();
     // $.ajax({
     //     type: 'POST',
     //     url: '/ajax/select/mark',
@@ -8,6 +9,61 @@ $(function () {
     //         $(".model").html(data);
     //     }
     // });
+    //
+    // var mark = $("#elastic").val();
+
+    // fetch('js/get/marks')
+    //     .then(response => response.json())
+    //     .then(result => console.log(result));
+
+    async function sssss() {
+        let markss = await fetch('js/get/marks');
+        let ress = await markss.json();
+        console.log(ress);
+    }
+
+    var markss;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'js/get/marks', false);
+    xhr.send();
+    if (xhr.status != 200) {
+
+    } else {
+        // вывести результат
+        alert( xhr.responseText ); // responseText -- текст ответа.
+        markss = xhr.responseText;
+    }
+    console.log(markss);
+
+    // let response = await fetch('/article/fetch/post/user', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json;charset=utf-8'
+    //     },
+    //     body: JSON.stringify(user)
+    // });
+    //
+    // let result = await response.json();
+
+
+    const marks = $.post('js/get/marks', function (response) {
+        return JSON.parse(response);
+    });
+    console.log(marks);
+    console.log('RUUUUUUUUUN');
+
+    const search = document.getElementById('search');
+    const matchList = document.getElementById('match-list');
+
+    const searchMark = async searchText => {
+        const res = await fetch(marks);
+        console.log(res);
+        const states = await res.json();
+        console.log(states);
+    }
+
+    search.addEventListener('input', () => searchMark(search.value));
+
     $("#js-select-mark").change(function () {
         var mark = $("#js-select-mark").val();
         if (mark == 0) {

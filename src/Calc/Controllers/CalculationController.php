@@ -158,4 +158,10 @@ class CalculationController extends AbstractController
         ]);
     }
 
+    public function getMarks()
+    {
+        $marks = SQL::getValues(TABLE_NAME_MARK, 'mark', true);
+        echo json_encode($marks);
+    }
+
 }
