@@ -2,6 +2,13 @@
 
     <form>
         <div class="container">
+
+<!--            <div class="col-5 form-group">-->
+<!--                <label for="exampleFormControlSelect1">Марка</label>-->
+<!--                <input class="form-control" type="text" id="js-mark" placeholder="Введите марку">-->
+<!--                <div id="js-mark-list"></div>-->
+<!--            </div>-->
+
             <div class="row">
             <div class="col-6 form-group label-font">
                 <label for="exampleFormControlSelect1">Марка</label>
@@ -88,7 +95,12 @@
 
             <div class="container">
 <div class="row">
-            
+
+            <div class="col-5 form-group">
+                <label for="exampleFormControlSelect1"><b>Страховая сумма</b></label>
+                <input class="form-control" type="text" id="js-insurance-sum" placeholder="Страховая сумма" value="1100000">
+                <p class="alert-danger" id="error_s"></p>
+            </div>
 
             <div class="col-9 custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" value="" id="customCheck1">
@@ -142,7 +154,7 @@
                 <input class="form-control" type="text" id="tariff" disabled>
             </div>
 
-</div>            
+</div>
 
             <div class=" col-12 text-right ">
                 <button type="button" class="btn btn-secondary" id="js-btn-submit">Рассчитать</button>

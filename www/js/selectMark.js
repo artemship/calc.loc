@@ -1,5 +1,5 @@
 $(function () {
-    var mark = $("#js-select-mark").val();
+    // var mark = $("#js-select-mark").val();
     // $.ajax({
     //     type: 'POST',
     //     url: '/ajax/select/mark',
@@ -8,6 +8,8 @@ $(function () {
     //         $(".model").html(data);
     //     }
     // });
+    //
+
     $("#js-select-mark").change(function () {
         var mark = $("#js-select-mark").val();
         if (mark == 0) {
@@ -35,6 +37,7 @@ $(function () {
     });
     $("#js-btn-submit").click(function () {
         var mark = $("#js-select-mark").val();
+        // var mark = $("#js-mark").val();
         var model = $("#js-select-model option:selected").text();
         var group = $("#js-select-model").val();
         var carAge = $("#js-select-car-age").val();
@@ -44,6 +47,7 @@ $(function () {
         var experience = $("#js-experience").val();
         var period = $("#js-select-period").val();
         var paymentProcedure = $("#js-select-payment-procedure").val();
+        var insuranceSum = $("#js-insurance-sum").val();
         var isWarranty = 0;
         var noGlassPayment = 0;
         var noBodyPayment = 0;
@@ -106,6 +110,7 @@ $(function () {
                 experience: experience,
                 period: period,
                 paymentProcedure: paymentProcedure,
+                insuranceSum: insuranceSum,
                 isWarranty: isWarranty,
                 noGlassPayment: noGlassPayment,
                 noBodyPayment: noBodyPayment,
