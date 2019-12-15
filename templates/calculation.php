@@ -3,11 +3,11 @@
     <form>
         <div class="container">
 
-            <div class="col-5 form-group">
-                <label for="exampleFormControlSelect1">Марка</label>
-                <input class="form-control" type="text" id="search" placeholder="Введите марку">
-                <div id="match-list"></div>
-            </div>
+<!--            <div class="col-5 form-group">-->
+<!--                <label for="exampleFormControlSelect1">Марка</label>-->
+<!--                <input class="form-control" type="text" id="js-mark" placeholder="Введите марку">-->
+<!--                <div id="js-mark-list"></div>-->
+<!--            </div>-->
 
             <div class="col-5 form-group">
                 <label for="exampleFormControlSelect1"><b>Марка</b></label>
