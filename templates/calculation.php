@@ -95,7 +95,11 @@
                     <label for="exampleFormControlSelect1">Срок страхования</label>
                     <select class="form-control " id="js-select-period">
                         <?php if (!empty($periods)):
-                            foreach ($periods as $key => $period): ?>
+                            foreach ($periods as $key => $period):
+                                if ($key === 6): ?>
+                                    <option value="<?= $key; ?>" selected><?= $period ?></option>
+                                    <? continue;
+                                endif; ?>
                                 <option value="<?= $key; ?>"><?= $period ?></option>
                             <? endforeach;
                         endif ?>
@@ -111,48 +115,41 @@
 
             <div class="container">
                 <div class="row">
-
                     <div class="col-9 custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" value="" id="customCheck1">
+                        <input type="checkbox" class="custom-control-input" value="" id="customCheck1" checked>
                         <label class="custom-control-label" for="customCheck1">
                             ТС находится на гарантии производителя
                         </label>
                     </div>
 
                     <div class="col-9 custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" value="" id="customCheck2">
+                        <input type="checkbox" class="custom-control-input" value="" id="customCheck2" checked>
                         <label class="custom-control-label" for="customCheck2">
                             Отсутствует выплата без справок из компетентных органов (один стеклянный элемент)
                         </label>
                     </div>
 
                     <div class="col-9 custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" value="" id="customCheck3">
+                        <input type="checkbox" class="custom-control-input" value="" id="customCheck3" checked>
                         <label class="custom-control-label" for="customCheck3">
-
                             Отсутствует выплата без справок из компетентных органов (один кузовной элемент)
                         </label>
                     </div>
 
                     <div class="col-9 custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" value="" id="customCheck4">
+                        <input type="checkbox" class="custom-control-input" value="" id="customCheck4" checked>
                         <label class="custom-control-label" for="customCheck4">
-
                             Агрегатная
                         </label>
                     </div>
                 </div>
             </div>
 
-            </br>
-
             <div class="container">
-
-
-                    <div class="col-6 form-group">
-                        <label for="exampleFormControlSelect1"><b>Тариф</b></label>
-                        <input class="form-control" type="text" id="tariff" disabled>
-                    </div>
+                <div class="col-6 form-group">
+                    <label for="exampleFormControlSelect1"><b>Тариф</b></label>
+                    <input class="form-control" type="text" id="tariff" disabled>
+                </div>
 
                 <div class=" col-12 ">
                     <button type="button" class="btn btn-secondary" id="js-btn-submit">Рассчитать</button>

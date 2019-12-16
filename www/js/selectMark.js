@@ -8,33 +8,27 @@ $(function () {
     //         $(".model").html(data);
     //     }
     // });
-    //
 
     $("#js-select-mark").change(function () {
         var mark = $("#js-select-mark").val();
         if (mark == 0) {
-
         }
         $.ajax({
             type: 'POST',
             url: '/ajax/select/mark',
             data: {mark: mark},
             success: function (data) {
-                // $(".model").html(data);
                 if (mark == 0) {
                     $("#js-select-model").prop("disabled", true);
                     $("#tariff").val('');
                 } else {
                     $("#js-select-model").prop("disabled", false);
                     $("#js-select-model").html(data);
-                    //alert(data);
-
                 }
-
-                // alert('123');
             }
         });
     });
+
     $("#js-btn-submit").click(function () {
         var mark = $("#js-select-mark").val();
         // var mark = $("#js-mark").val();
@@ -52,7 +46,6 @@ $(function () {
         var noGlassPayment = 0;
         var noBodyPayment = 0;
         var isAggregate = 0;
-
         if (mark == 0) {
             $("#tariff").val('Выберите марку');
             return;
@@ -77,24 +70,18 @@ $(function () {
             document.getElementById("js-experience").style.borderColor = null;
             //$("#js-experience").val('Стаж указан неверно, проверьте введенные данные!');
         }
-
-
-
         if (customCheck1.checked) {
             isWarranty  = 1;
         } 
         if (customCheck2.checked) {
             noGlassPayment = 1;
-        } 
-
+        }
         if (customCheck3.checked) {
             noBodyPayment = 1;
         }
-
         if (customCheck4.checked) {
             isAggregate = 1;
-        } 
-
+        }
         $.ajax({
             url: '/ajax/btn/submit',
             type: 'POST',
@@ -118,8 +105,6 @@ $(function () {
             },
             success: function (data) {
                 $("#tariff").val(data);
-                
-                //alert(data);
                 // alert(group + ageCar + insuranceRisk);
             }
         });
