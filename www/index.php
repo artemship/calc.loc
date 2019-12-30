@@ -1,6 +1,7 @@
 <?php
     require __DIR__ . '/../vendor/autoload.php';
 
+use Calc\Exceptions\DbException;
 use Calc\Exceptions\NotFoundException;
 use Calc\Models\Cars\Car;
 use Calc\Services\Db;
@@ -35,9 +36,9 @@ try {
     $controller = new $controllerName();
     $controller->$actionName(...$matches);
 
-//} catch (DbException $e) {
-//    $view = new View(__DIR__ . '/../templates/errors');
-//    $view->renderHtml('500.php', ['error' => $e->getMessage()], 500);
+} catch (DbException $e) {
+    $view = new View(__DIR__ . '/../templates/errors');
+    $view->renderHtml('500.php', ['error' => $e->getMessage()], 500);
 //} catch (UnauthorizedException $e) {
 //    $view = new View(__DIR__ . '/../templates/errors');
 //    $view->renderHtml('401.php', ['error' => $e->getMessage()], 401);

@@ -1,11 +1,11 @@
 {
-    "name": "artemship/calc",
+    "name": "psy/calc",
     "type": "project",
     "license": "proprietary",
     "authors": [
         {
-            "name": "Artem Shipilov",
-            "email": "avs.artem@list.ru"
+            "name": "Psy Acid",
+            "email": "psy@acid.com"
         }
     ],
     "autoload": {
