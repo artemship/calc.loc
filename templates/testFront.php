@@ -16,128 +16,331 @@
 </head>
 
 <body>
-<hr>
-<section id="form-parameter">
-    <form>
-        <div class="container">
-            <div class="col-5 form-group">
-                <label for="exampleFormControlSelect1">Параметр 1</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            <div class=" col-5 text-right ">
-                <button type="button" class="btn btn-secondary ">Продолжить</button>
-            </div>
-        </div>
-    </form>
-</section>
-</br>
-</br>
-<hr>
-</br>
-</br>
-<section id="input">
-    <div class="container">
-        <form>
-            <div class="form-row align-items-center">
-
-                <div class="col-auto">
-
-                    <div class="input-group mb-2">
 
 
-                        <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fas fa-user-check"></i></div>
-                        </div>
-
-                        <input type="text" class="form-control" id="inlineLogin" placeholder="Логин">
-                    </div>
-                </div>
+<div id="tabs">
+        <div class="tab whiteborder">Tab 1</div>
+        <div class="tab">Tab 2</div>
+        <div class="tab">Tab 3</div>
+        <div class="tabContent">
 
 
-                <div class="col-auto">
-
-                    <div class="input-group mb-2">
+        <div class="container-new">
 
 
-                        <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fas fa-key"></i></div>
-
-                        </div>
-                        <input type="text" class="form-control" id="inlinePassword" placeholder="Пароль">
-                    </div>
-                </div>
-
-                <div class="col-auto">
-                </div>
-
-
-                <button type="submit" class="btn btn-secondary mb-2">Войти</button>
-            </div>
-
+<div class="row">
+    <div class="col-6 form-group label-font">
+        <label for="exampleFormControlSelect1">Марка</label>
+        <select class="form-control" id="js-select-mark" onchange="nulltariff()">
+            <option value="0">--Выбрать марку--</option>
+            <?php if (!empty($marks)):
+                foreach ($marks as $mark): ?>
+                    <option value="<?= $mark; ?>"><?= $mark ?></option>
+                <? endforeach;
+            endif ?>
+        </select>
     </div>
-    </form>
-
+    <div class="col-6 form-group label-font">
+        <label for="exampleFormControlSelect1">Франшиза</label>
+        <select class="form-control" id="js-select-franchise" onchange="nulltariff()">
+            <?php if (!empty($franchises)):
+                foreach ($franchises as $franchise): ?>
+                    <option value="<?= $franchise; ?>"><?= $franchise . ' %' ?></option>
+                <? endforeach;
+            endif ?>
+        </select>
     </div>
-</section>
-<hr>
-<section id="check">
-    <div class="container">
+</div>
 
+<div class="row">
+    <div class="col-6 form-group label-font">
+        <label for="exampleFormControlSelect1">Модель</label>
+        <select class="form-control" id="js-select-model" onchange="nulltariff()" disabled>
+            <option value="0">--Выбрать модель--</option>
+        </select>
+        <!--                <span class="model"></span>-->
+    </div>
+    <div class="col-6 form-group label-font">
+        <label for="exampleFormControlSelect1">Порядок оплаты страховой премии</label>
+        <select class="form-control " id="js-select-payment-procedure">
+            <?php if (!empty($paymentProcedures)):
+                foreach ($paymentProcedures as $key => $option): ?>
+                    <option value="<?= $key; ?>"><?= $option ?></option>
+                <? endforeach;
+            endif ?>
+        </select>
+    </div>
+</div>
 
-        <div class="col-5 form-group">
-            <label for="exampleFormControlSelect1">Параметр 1</label>
-            <select class="form-control js-select-mark" id="exampleFormControlSelect1">
-                <option value="0">--Выбрать марку--</option>
-            </select>
-        </div>
+<div class="row">
+    <div class="col-6 form-group label-font">
+        <label for="exampleFormControlSelect1">Год выпуска</label>
+        <select class="form-control " id="js-select-car-age" onchange="nulltariff()">
+            <?php if (!empty($carsAge)):
+                foreach ($carsAge as $key => $carAge): ?>
+                    <option value="<?= $key; ?>"><?= $carAge ?></option>
+                <? endforeach;
+            endif ?>
+        </select>
+    </div>
+    <div class="col-6 form-group label-font">
+        <label for="exampleFormControlSelect1"><b>Страховая сумма</b></label>
+        <input class="form-control" type="text" id="js-insurance-sum" placeholder="Страховая сумма"
+               value="1100000">
+    </div>
+</div>
 
-        </br>
-        <div class="col-5">
-            <input class="form-control" type="text" placeholder="Ваш текст">
+<div class="row">
+    <div class="col-6 form-group label-font">
+        <label for="exampleFormControlSelect1">Страховой риск</label>
+        <select class="form-control " id="js-select-insurance" maxlength="30" onchange="nulltariff()">
+            <?php if (!empty($insurances)):
+                foreach ($insurances as $key => $insurance): ?>
+                    <option value="<?= $key; ?>"><?= $insurance ?></option>
+                <? endforeach;
+            endif ?>
+        </select>
+    </div>
 
-            </br>
+                                  
 
-            <input class="form-control" type="text" placeholder="Ваш текст">
-        </div>
-        </br>
+    <div class="col-6 form-group label-font">
+        <label for="exampleFormControlSelect1">Возраст водителя</label>
+        <input class="form-control form-control-2" maxlength="30 type="text" id="js-age" placeholder="Возраст водителя"
+               onchange="nulltariff()">
+        <p class="alert-danger" id="error_v"></p>
+    </div>
+</div>
 
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="">Параметр 1
+<div class="row">
+    <div class="col-6 form-group label-font">
+        <label for="exampleFormControlSelect1">Срок страхования</label>
+        <select class="form-control " id="js-select-period">
+            <?php if (!empty($periods)):
+                foreach ($periods as $key => $period):
+                    if ($key === 6): ?>
+                        <option value="<?= $key; ?>" selected><?= $period ?></option>
+                        <? continue;
+                    endif; ?>
+                    <option value="<?= $key; ?>"><?= $period ?></option>
+                <? endforeach;
+            endif ?>
+        </select>
+    </div>
+    <div class="col-6 form-group label-font">
+        <label for="exampleFormControlSelect1">Стаж</label>
+        <input class="form-control" type="text" id="js-experience" placeholder="Стаж"
+               onchange="nulltariff()">
+        <p class="alert-danger" id="error_s"></p>
+    </div>
+</div>
+
+<div class="container-new">
+<div class="row">
+        <div class="col-12 custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" value="" id="customCheck1" checked>
+            <label class="custom-control-label" for="customCheck1">
+                ТС находится на гарантии производителя
             </label>
         </div>
 
-    </div>
+        <div class="col-12 custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" value="" id="customCheck2" checked>
+            <label class="custom-control-label" for="customCheck2">
+                Отсутствует выплата без справок из компетентных органов (один стеклянный элемент)
+            </label>
+        </div>
 
-</section>
+        <div class="col-12 custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" value="" id="customCheck3" checked>
+            <label class="custom-control-label" for="customCheck3">
+                Отсутствует выплата без справок из компетентных органов (один кузовной элемент)
+            </label>
+        </div>
 
-<hr>
-<div class="col-5 form-group">
-<input type="text" name="referal" placeholder="Живой поиск" value="" class="who"  autocomplete="off">
-    <ul class="search_result"></ul>
+        <div class="col-12 custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" value="" id="customCheck4" checked>
+            <label class="custom-control-label" for="customCheck4">
+                Агрегатная
+            </label>
+        </div>
+</div>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+<div class="container-new">
+    <div class="col-6 form-group">
+        <label for="exampleFormControlSelect1"><b>Тариф</b></label>
+        <input class="form-control" type="text" id="tariff" disabled>
+    </div>
+
+    <div class=" col-12 ">
+        <button type="button" class="btn btn-secondary" id="js-btn-submit">Рассчитать</button>
+    </div>
+
+</div> 
+</div>
+</div>
 
 
-<br>
-<br>
-<br>
-<br><br>
-<br>
-<br>
-<br>
 
+
+
+
+
+
+        <div class="tabContent">
+
+
+
+
+        <div class="container-new2">
+    <div class="row">
+
+        <div class="col-4 form-group">                        
+            <label for="exampleFormControlSelect1">ФИО</label>
+            <input class="form-control" type="text" placeholder="ФИО">
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Дата рождения</label>
+            <input class="form-control" type="date" placeholder="Дата рождения">
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Телефон</label>
+            <input type="tel" name="phone" id="phone" class="form-control bfh-phone" data-format="+7 (ddd) ddd-dd-dd" value="" pattern="(\+[\d\ \(\)\-]{16})">
+          
+        </div> 
+
+    </div>   
+    
+    <div class="row">
+        <div class="col-4 form-group">                            
+            <label for="exampleFormControlSelect1">Регион</label>
+            <input class="form-control" type="text" placeholder="Регион">
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Адрес регистрации</label>
+            <input class="form-control" type="text" placeholder="Адрес регистрации">
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Гражданство</label>
+            <input class="form-control" type="text" placeholder="Гражданство">
+        </div> 
+    </div>  
+        
+    <div class="row">    
+        <div class="col-4 form-group">
+
+            <label for="exampleFormControlSelect1">Паспорт</label>
+            <input class="form-control num" type="text" id="num" placeholder="Паспорт">
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">ИНН</label>
+            <input class="form-control num" type="text" id="num" placeholder="ИНН">
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Почта</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Почта">
+        </div> 
+    </div>         
+
+ </div>
+
+
+        </div>
+        <div class="tabContent">
+
+
+
+
+
+
+
+        <div class="container-new2">
+  
+  
+        
+        
+
+    <div class="row">                           
+        <div class="col-4 form-group">
+
+            <label for="exampleFormControlSelect1">Марка</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Марка" disabled>
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Модель</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Модель" disabled>
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Год изготовления</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Год изготовления" disabled>
+        
+        </div> 
+    </div>      
+        
+    <div class="row">    
+        <div class="col-4 form-group">
+
+            <label for="exampleFormControlSelect1">Категория ТС</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Категория ТС">
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Мощность двигателя, л.с.</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Мощность двигателя, л.с.">
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Объем двигателя, см3</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Объем двигателя, см3">
+
+        </div> 
+    </div>    
+        
+    <div class="row">    
+        <div class="col-4 form-group">
+
+            <label for="exampleFormControlSelect1">Идентификационный номер VIN</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Идент. номер VIN">
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Количество ключей замка зажигания</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Кол-во ключей замка зажиг.">
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Государственный регистрационный знак</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Гос. рег. знак">
+        </div>  
+    </div>    
+
+    <div class="row">    
+        <div class="col-4 form-group">  
+
+            <label for="exampleFormControlSelect1">Разрешенная макс. масса, кг</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Разрешенная макс. масса, кг">
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Серия и ПТС/ПСМ</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Серия и ПТС/ПСМ">
+        </div>
+        <div class="col-4 form-group">
+            <label for="exampleFormControlSelect1">Серия и СТС</label>
+            <input class="form-control" type="text" id="js-age" placeholder="Серия и СТС">
+        </div>    
+    </div>
+</div>
+</div>
+ 
+
+
+
+
+
+
+
+
+
+    <script>
+
+</script>
 </body>
 
 </html>

@@ -117,3 +117,5 @@ function nulltariff() {
     document.getElementById("tariff").value = '';
 }
 
+
+

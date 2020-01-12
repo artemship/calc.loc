@@ -10,8 +10,18 @@
     <title>Калькулятор</title>
     <!-- подключаем jquery -->
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/tab.js"></script>
     <script type="text/javascript" src="js/selectMark.js"></script>
     <script type="text/javascript" src="js/liveSearch.js"></script>
+    <script type="text/javascript" src="js/bootstrap-formhelpers-phone.js"></script>
+
+
+   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
 <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 <!--    <script src="js/search.js"></script>-->
 </head>
