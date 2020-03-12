@@ -13,7 +13,12 @@
             "Calc\\": "src/Calc/"
         }
     },
+    "config": {
+        "sort-packages": true
+    },
     "require": {
-      "ext-json": "*"
+        "php": ">=7.1.0",
+        "ext-json": "*",
+        "roave/security-advisories": "dev-master"
     }
 }
