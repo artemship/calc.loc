@@ -1,10 +1,15 @@
 <?php
 
 return [
+    '~^register~' => [\Calc\Controllers\UsersController::class, 'signUp'],
+    '~^login$~' => [\Calc\Controllers\UsersController::class, 'login'],
+    '~^profile~' => [\Calc\Controllers\UsersController::class, 'profile'],
+    '~^logout$~' => [\Calc\Controllers\UsersController::class, 'logout'],
     '~^$~' => [\Calc\Controllers\CalculationController::class, 'calculation'],
     '~^ajax/btn/submit$~' => [\Calc\Controllers\CalculationController::class, 'submit'],
     '~^ajax/select/mark$~' => [\Calc\Controllers\CalculationController::class, 'selectMark'],
     '~^js/get/marks$~' => [\Calc\Controllers\CalculationController::class, 'getMarks'],
+    '~^policy$~' => [\Calc\Controllers\MainController::class, 'policy'],
 //    '~^articles/(\d+)/comments/(\d+)/delete$~' => [\MyProject\Controllers\CommentsController::class, 'delete'],
 //    '~^articles/(\d+)/comments/(\d+)/edit$~' => [\MyProject\Controllers\CommentsController::class, 'edit'],
 //    '~^articles/(\d+)/comments$~' => [\MyProject\Controllers\CommentsController::class, 'add'],

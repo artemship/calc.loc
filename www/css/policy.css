@@ -1,0 +1,359 @@
+body {
+    margin: 0;
+}
+
+@media print {
+    @page {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+p {
+    margin: 0;
+}
+
+input[type='radio'] {
+    margin: 0 3px 0 5px;
+}
+
+.radio {
+    margin-right: 18px;
+}
+
+.checkbox {
+    margin-right: 36px;
+    font-size: 15px;
+}
+
+.cell {
+    border-width: 1px;
+    border-color: #C0C0C0;
+    border-style: solid;
+    padding: 2px 2px 0;
+    font-family: Arial;
+}
+
+.center {
+    text-align: center;
+    justify-content: center;
+}
+
+.right {
+    text-align: right;
+    justify-content: flex-end;
+}
+
+#tel {
+    padding-left: 598.5px;
+    padding-top: 133px;
+    font-family: Arial;
+    font-size: 13.5px;
+    font-weight: 600;
+}
+
+#ktc {
+    padding-left: 271.5px;
+    padding-top: 7px;
+    font-family: Arial;
+    font-size: 16.47px;
+    font-weight: 600;
+}
+
+#table {
+    margin: 44px 73px 0 55px;
+    /*height: 1406px;*/
+    border-width: 1px;
+    border-color: #C0C0C0;
+    border-style: solid;
+}
+
+#title {
+    text-align: center;
+    font-size: 10.8px;
+    padding: 10px 0 5px;
+}
+
+.flex {
+    display: flex;
+    align-items: center; /*Центрирование по вертикали */
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.caption-gray {
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #E0E0E0;
+    display: flex;
+    /*justify-content: center; !*Центрирование по горизонтали*!*/
+    align-items: center; /*Центрирование по вертикали */
+}
+
+.caption-blue {
+    font-size: 12.31px;
+    background: #DAE9F6;
+    display: flex;
+    align-items: center; /*Центрирование по вертикали */
+}
+
+.caption-blue-bold {
+    font-size: 12.31px;
+    font-weight: 600;
+    background: #DAE9F6;
+    display: flex;
+    align-items: center; /*Центрирование по вертикали */
+}
+
+.caption-yellow-bold {
+    font-size: 12.31px;
+    font-weight: 600;
+    font-style: italic;
+    background: #FFDF79;
+    display: flex;
+    align-items: center; /*Центрирование по вертикали */
+}
+
+.signature {
+    color: #808080;
+}
+
+.section {
+    font-size: 13.5px;
+    font-weight: 600;
+    background: #B0B0B0;
+}
+
+.value {
+    font-size: 13.5px;
+    font-weight: 600;
+}
+
+.value-fs9 {
+    font-size: 12.31px;
+    font-weight: 600;
+}
+
+.last {
+    flex: 1;
+}
+
+#page {
+    /*background-image: url("../img/zamzar.png");*/
+    /*width: 970px;*/
+    /*height: 1604px;*/
+    /*width: 1051px;*/
+    /*height: 1345px;*/
+    width: 1189px;
+    height: 1682px;
+    vertical-align: middle;
+    /*background-size: 926px 1310px;*/
+    background-size: 1170px 1655px;
+    /*background-size: cover;*/
+    image-rendering: high-quality;
+}
+
+.border-left-none {
+    border-left: 0;
+}
+
+.border-right-none {
+    border-right: 0;
+}
+
+.border-top-none {
+    border-top: 0;
+}
+
+.border-bottom-none {
+    border-bottom: 0;
+}
+
+.fs7 {
+    font-size: 9.45px;
+}
+
+.fs8 {
+    font-size: 10.8px;
+}
+
+.fs9 {
+    font-size: 12.31px;
+}
+
+.fs10 {
+    font-size: 13.5px;
+}
+
+.w1 {
+    width: 100px;
+}
+
+.w17 {
+    width: 17px;
+}
+
+.w26 {
+    width: 26px;
+}
+
+.w29 {
+    width: 29px;
+}
+
+.w37 {
+    width: 37px;
+}
+
+.w66 {
+    width: 66px;
+}
+
+.w71 {
+    width: 71px;
+}
+
+.w75 {
+    width: 75px;
+}
+
+.w87 {
+    width: 87px;
+}
+
+.w98 {
+    width: 98px;
+}
+
+.w105 {
+    width: 105px;
+}
+
+.w108 {
+    width: 108px;
+}
+
+.w110 {
+    width: 110px;
+}
+
+.w111 {
+    width: 111px;
+}
+
+.w115 {
+    width: 115px;
+}
+
+.w125 {
+    width: 125px;
+}
+
+.w126 {
+    width: 126px;
+}
+
+.w128 {
+    width: 128px;
+}
+
+.w133 {
+    width: 133px;
+}
+
+.w141 {
+    width: 141px;
+}
+
+.w143 {
+    width: 143px;
+}
+
+.w183 {
+    width: 183px;
+}
+
+.w194 {
+    width: 194px;
+}
+
+.w195 {
+    width: 195px;
+}
+
+.w211 {
+    width: 211px;
+}
+
+.w226 {
+    width: 226px;
+}
+
+.w256 {
+    width: 256px;
+}
+
+.w264 {
+    width: 264px;
+}
+
+.w272 {
+    width: 272px;
+}
+
+.w310 {
+    width: 310px;
+}
+
+.w333 {
+    width: 333px;
+}
+
+.w334 {
+    width: 334px;
+}
+
+.w372 {
+    width: 372px;
+}
+
+.w403 {
+    width: 403px;
+}
+
+.w420 {
+    width: 420px;
+}
+
+.w462 {
+    width: 462px;
+}
+
+.w516 {
+    width: 516px;
+}
+
+.w517 {
+    width: 517px;
+}
+
+.w534 {
+    width: 534px;
+}
+
+.w650 {
+    width: 650px;
+}
+
+.w838 {
+    width: 838px;
+}
+

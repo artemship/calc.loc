@@ -12,7 +12,14 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/selectMark.js"></script>
     <script type="text/javascript" src="js/liveSearch.js"></script>
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-<!--    <script src="js/search.js"></script>-->
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <!--    <script src="js/search.js"></script>-->
 </head>
 <body>
+<?php if (!empty($user)): ?>
+    Привет, <a href="/profile"><?= $user->getNickname(); ?> </a>|
+    <a href="/logout">Выйти</a>
+<?php else: ?>
+<a href="/login">Войти</a> |
+<a href="/register">Зарегистрироваться</a>
+<?php endif; ?>

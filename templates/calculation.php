@@ -1,6 +1,6 @@
 <section id="form-parameter">
 
-    <form>
+    <form action="policy" method="post">
         <div class="container">
 
             <!--            <div class="col-5 form-group">-->
@@ -153,7 +153,10 @@
 
                 <div class=" col-12 ">
                     <button type="button" class="btn btn-secondary" id="js-btn-submit">Рассчитать</button>
+                    <button type="button" class="btn btn-secondary" id="js-btn-print">Печать</button>
                 </div>
+
+
             </div>
         </div>
     </form>
