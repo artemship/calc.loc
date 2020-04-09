@@ -2,8 +2,8 @@
 
 return [
     '~^register~' => [\Calc\Controllers\UsersController::class, 'signUp'],
-    '~^login$~' => [\Calc\Controllers\UsersController::class, 'login'],
     '~^profile~' => [\Calc\Controllers\UsersController::class, 'profile'],
+    '~^login$~' => [\Calc\Controllers\UsersController::class, 'login'],
     '~^logout$~' => [\Calc\Controllers\UsersController::class, 'logout'],
     '~^$~' => [\Calc\Controllers\CalculationController::class, 'calculation'],
     '~^ajax/btn/submit$~' => [\Calc\Controllers\CalculationController::class, 'submit'],

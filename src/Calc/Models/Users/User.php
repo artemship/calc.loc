@@ -8,7 +8,7 @@ use Calc\Models\ActiveRecordEntity;
 class User extends ActiveRecordEntity
 {
     /** @var string */
-    protected $nickname;
+    protected $login;
     /** @var string */
     protected $passwordHash;
     /** @var string */
@@ -19,9 +19,9 @@ class User extends ActiveRecordEntity
     /**
      * @return string
      */
-    public function getNickname(): string
+    public function getLogin(): string
     {
-        return $this->nickname;
+        return $this->login;
     }
 
     /**
@@ -60,21 +60,21 @@ class User extends ActiveRecordEntity
 
     public static function login(array $loginData): User
     {
-        if (empty($loginData['nickname'])) {
-            throw new InvalidArgumentException('Не передан nickname');
+        if (empty($loginData['login'])) {
+            throw new InvalidArgumentException('Пожалуйста, введите Ваш логин');
         }
 
         if (empty($loginData['password'])) {
-            throw new InvalidArgumentException('Не передан пароль');
+            throw new InvalidArgumentException('Пожалуйста, введите пароль');
         }
 
-        $user = User::findOneByColumn('nickname', $loginData['nickname']);
+        $user = User::findOneByColumn('login', $loginData['login']);
         if ($user === null) {
-            throw new InvalidArgumentException('Нет пользователя с таким логином');
+            throw new InvalidArgumentException('Вход не выполнен. Пожалуйста, проверьте правильность ввода логина и пароля.');
         }
 
-        if(!password_verify($loginData['password'], $user->getPasswordHash())) {
-            throw new InvalidArgumentException('Неправильный пароль');
+        if (!password_verify($loginData['password'], $user->getPasswordHash())) {
+            throw new InvalidArgumentException('Вход не выполнен. Пожалуйста, проверьте правильность ввода логина и пароля.');
         }
 
         $user->refreshAuthToken();
@@ -85,12 +85,12 @@ class User extends ActiveRecordEntity
 
     public static function signUp(array $userData): User
     {
-        if (empty($userData['nickname'])) {
-            throw new InvalidArgumentException('Не передан nickname');
+        if (empty($userData['login'])) {
+            throw new InvalidArgumentException('Не передан логин');
         }
 
-        if (!preg_match('/[a-zA-Z0-9]+/', $userData['nickname'])) {
-            throw new InvalidArgumentException('Nickname может состоять только из символов латинского алфавита и цифр');
+        if (!preg_match('/[a-zA-Z0-9]+/', $userData['login'])) {
+            throw new InvalidArgumentException('Логин может состоять только из символов латинского алфавита и цифр');
         }
 
 //        if (empty($userData['email'])) {
@@ -102,15 +102,15 @@ class User extends ActiveRecordEntity
 //        }
 
         if (empty($userData['password'])) {
-            throw new InvalidArgumentException('Не передан password');
+            throw new InvalidArgumentException('Не передан пароль');
         }
 
         if (mb_strlen($userData['password']) < 8) {
             throw new InvalidArgumentException('Пароль должен быть не менее 8 символов');
         }
 
-        if (static::findOneByColumn('nickname', $userData['nickname']) !== null) {
-            throw new InvalidArgumentException('Пользователь с таким nickname уже существет');
+        if (static::findOneByColumn('login', $userData['login']) !== null) {
+            throw new InvalidArgumentException('Пользователь с таким логином уже существет');
         }
 
 //        if (static::findOneByColumn('email', $userData['email']) !== null) {
@@ -118,12 +118,28 @@ class User extends ActiveRecordEntity
 //        }
 
         $user = new User();
-        $user->nickname = $userData['nickname'];
+        $user->login = $userData['login'];
 //        $user->email = $userData['email'];
         $user->passwordHash = password_hash($userData['password'], PASSWORD_DEFAULT);
 //        $user->isConfirmed = false;
         $user->role = 'user';
         $user->authToken = sha1(random_bytes(100)) . sha1(random_bytes(100));
+        $user->save();
+
+        return $user;
+    }
+
+    public static function changePassword(User $user, string $newPassword): User
+    {
+        if (empty($newPassword)) {
+            throw new InvalidArgumentException('Не передан пароль');
+        }
+
+        if (mb_strlen($newPassword) < 8) {
+            throw new InvalidArgumentException('Пароль должен быть не менее 8 символов');
+        }
+
+        $user->passwordHash = password_hash($newPassword, PASSWORD_DEFAULT);
         $user->save();
 
         return $user;

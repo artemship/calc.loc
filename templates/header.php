@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css" type="text/css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+<!--          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -16,10 +16,50 @@
     <!--    <script src="js/search.js"></script>-->
 </head>
 <body>
-<?php if (!empty($user)): ?>
-    Привет, <a href="/profile"><?= $user->getNickname(); ?> </a>|
-    <a href="/logout">Выйти</a>
-<?php else: ?>
-<a href="/login">Войти</a> |
-<a href="/register">Зарегистрироваться</a>
-<?php endif; ?>
+<div class="main">
+    <a href="/">
+        <div class="header">
+            <img class="logo" src="/img/logo.png">
+        </div>
+    </a>
+    <nav>
+        <div class="menu">
+            <div class="flex-row">
+                <div class="menu-item">
+                    КАСКО
+                </div>
+                <div class="menu-item">
+                    ОСАГО
+                </div>
+            </div>
+
+            <div class="flex-row ">
+                <?php if (!empty($user)): ?>
+                    <a href="/profile" class="flex-row text-login menu-item">
+                        <div class="icon-login">
+                            <?php include __DIR__ . '../../www/img/icons/icon-login.svg'; ?>
+                        </div>
+                        <?= $user->getLogin(); ?>
+                    </a>
+                    <a href="/logout" class="flex-row text-login menu-item">
+                        <div class="icon-login">
+                            <?php include __DIR__ . '../../www/img/icons/icon-logout.svg'; ?>
+                        </div>
+                        Выйти
+                    </a>
+                <?php else: ?>
+                    <a href="/login" class="flex-row text-login menu-item">
+                        <div class="icon-login">
+                            <?php include __DIR__ . '../../www/img/icons/icon-login.svg'; ?>
+                        </div>
+                        <!--                        <img src="/img/icons/quser-icon.svg" class="icon-login">-->
+                        Войти
+                    </a>
+                    <!--                    <span class="icon_login"></span>-->
+                    <!--                | <a href="/register">Зарегистрироваться</a>-->
+                <?php endif; ?>
+            </div>
+
+
+        </div>
+    </nav>
