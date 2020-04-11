@@ -307,7 +307,48 @@ input[type=submit]:hover, button:hover {
     width: 60%;
     border: none;
     border-bottom: 1px solid #CED4DA;
+}
 
+.test {
+    width: 60px;
+}
+
+#auto-number__number {
+    width: 60px;
+    flex-grow: 7;
+}
+
+#auto-number__region {
+    width: 60px;
+    flex-grow: 3;
+    margin-right: 12px;
+}
+
+#auto-number__country {
+    width: 60px;
+    flex-grow: 1;
+}
+
+#auto-documents__pts-serial {
+    width: 60px;
+    flex-grow: 2;
+    margin-right: 12px;
+}
+
+#auto-documents__pts-number {
+    width: 60px;
+    flex-grow: 5;
+}
+
+#auto-documents__sts-serial {
+    width: 60px;
+    flex-grow: 2;
+    margin-right: 12px;
+}
+
+#auto-documents__sts-number {
+    width: 60px;
+    flex-grow: 5;
 }
 
 /*=== end-calculation-container ===*/

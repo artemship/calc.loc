@@ -183,12 +183,20 @@
 
             <div class="table-row">
                 <label class="calculation-label">Государственный регистрационный знак</label>
-                <input class="calculation-content" type="text">
+                <div class="flex-row">
+                    <input class="calculation-content" id="auto-number__number" type="text" placeholder="A 111 AA"
+                           maxlength="6">
+                    <input class="calculation-content" id="auto-number__region" type="text" placeholder="111"
+                           maxlength="3">
+                    <input class="calculation-content ta-center" id="auto-number__country" type="text" placeholder="RUS"
+                           disabled>
+                </div>
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Идентификационный номер VIN</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" type="text"
+                       maxlength="17">
             </div>
 
             <div class="table-row">
@@ -218,12 +226,22 @@
 
             <div class="table-row">
                 <label class="calculation-label">Серия и № ПТС / ПСМ</label>
-                <input class="calculation-content" type="text">
+                <div class="flex-row">
+                    <input class="calculation-content" id="auto-documents__pts-serial" type="text" placeholder="Серия"
+                           maxlength="4">
+                    <input class="calculation-content" id="auto-documents__pts-number" type="text" placeholder="Номер"
+                           maxlength="6">
+                </div>
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Серия и № СТС</label>
-                <input class="calculation-content" type="text">
+                <div class="flex-row">
+                    <input class="calculation-content" id="auto-documents__sts-serial" type="text" placeholder="Серия"
+                           maxlength="4">
+                    <input class="calculation-content" id="auto-documents__sts-number" type="text" placeholder="Номер"
+                           maxlength="6">
+                </div>
             </div>
 
         </div>
@@ -322,7 +340,7 @@
                 <input class="calculation-content" type="text" placeholder="Квартира">
             </div>
 
-          </div>
+        </div>
 
     </div>
 
