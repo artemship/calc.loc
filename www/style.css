@@ -1,5 +1,9 @@
+@import "checkBoxAndRadio.css";
+
 body {
+    margin: 0;
     font-family: "Noto Sans", Arial, sans-serif;
+    color: rgb(73, 80, 87);
     /*font-size: 14px;*/
 }
 
@@ -8,12 +12,24 @@ a {
 }
 
 h1 {
+    margin: 24px 0;
     font-size: 24px;
     text-align: center;
 }
 
-label {
+select {
+    padding: 6px 12px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: rgb(206, 212, 218);
+    background-clip: padding-box;
+    font-size: 16px;
     color: rgb(73, 80, 87);
+}
+
+select:disabled {
+    background-color: rgb(233, 236, 239);
 }
 
 input[type=text] {
@@ -45,7 +61,7 @@ input[type=password] {
     color: rgb(73, 80, 87);
 }
 
-input[type=submit] {
+input[type=submit], button {
     padding: 6px 12px;
     /*background-color: rgb(108, 117, 125);*/
     /*border-color: rgb(108, 117, 125);*/
@@ -63,7 +79,7 @@ input[type=submit] {
     overflow: visible;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, button:hover {
     /*background-color: rgb(89, 96, 103);*/
     /*border-color: rgb(83, 90, 96);*/
     background-color: #0a1a9c;
@@ -75,7 +91,8 @@ input[type=submit]:hover {
     min-width: 300px;
     margin-left: auto;
     margin-right: auto;
-    background: #DAE9F6;
+    /*background: #DAE9F6;*/
+    background: #F6F6F6;
     padding-bottom: 100px;
 }
 
@@ -166,8 +183,20 @@ input[type=submit]:hover {
     display: table-row;
 }
 
+.ta-left {
+    text-align: left;
+}
+
+.ta-right {
+    text-align: right;
+}
+
 .ta-center {
     text-align: center;
+}
+
+.display {
+    display: inline-block;
 }
 
 .table-row a {
@@ -217,6 +246,73 @@ input[type=submit]:hover {
     color: #f7624e;
 
 }
+
+/*=== calculation-container ===*/
+.calculation {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.calculation-container {
+    margin: 0 auto;
+    padding: 24px 0;
+    max-width: 1200px;
+    background-color: #FFFFFF;
+}
+
+.calculation-label {
+    display: table-cell;
+    /*width: 325px;*/
+    width: 42.5%;
+    padding-right: 50px;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.calculation-checkbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+    font-size: 14px;
+}
+
+.calculation-content {
+    margin: 8px 0;
+    width: 100%;
+    height: 42px;
+}
+
+.calculation-button {
+    margin: 16px 0 0 24px;
+    width: 130px;
+}
+/*=== end-calculation-container ===*/
+
+
+
+/*=== calculation form ===*/
+.form {
+    margin: 0 auto;
+    max-width: 610px;
+}
+.form__row {
+    position: relative;
+    display: block;
+}
+.form__row +.form__row {
+    margin-top: 16px;
+}
+.form__label {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    max-width: 210px;
+    display: block;
+}
+/*=== end calculation form ===*/
+
+
 
 
 /*.form-label {*/

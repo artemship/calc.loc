@@ -41,8 +41,13 @@ class CalculationController extends AbstractController
             die (json_encode('Wrong Payment Procedure'));
         }
 
+        $insuranceSum = preg_match('~^\d+$~', trim($_POST['insuranceSum'])) ? (int)($_POST['insuranceSum']) : null;
         $age = preg_match('~^\d+$~', trim($_POST['age'])) ? (int)($_POST['age']) : null;
         $experience = preg_match('~^\d+$~', trim($_POST['experience'])) ? (int)($_POST['experience']) : null;
+
+        if ($insuranceSum <= 0) {
+            die (json_encode('Wrong Insurance Sum'));
+        }
 
         if ($age < 18) {
             die (json_encode('Wrong Age'));
@@ -68,7 +73,6 @@ class CalculationController extends AbstractController
         $franchise = (int)$_POST['franchise'];
         $period = (int)$_POST['period'] + 1;
         $paymentProcedure = (float)$_POST['paymentProcedure'];
-        $insuranceSum = (int)$_POST['insuranceSum'];
         $cWarranty = ((int)$_POST['isWarranty'] == 1) ? 1.15 : 1.6;
         $cGlassPayment = ((int)$_POST['noGlassPayment'] == 1) ? 0.97 : 1;
         $cBodyPayment = ((int)$_POST['noBodyPayment'] == 1) ? 0.97 : 1;
