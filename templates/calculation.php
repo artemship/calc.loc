@@ -1,7 +1,8 @@
-<h1>Калькулятор КАСКО</h1>
+<h1></h1>
+<form action="policy" method="post">
 
-<div class="calculation-container">
-    <form action="policy" method="post">
+    <h2>Калькулятор КАСКО</h2>
+    <div class="calculation-container">
 
 
         <div class="table calculation">
@@ -142,41 +143,187 @@
 
             <div class="table-row ta-right">
                 <label class="calculation-label"></label>
-<!--                <button type="button" class="btn btn-secondary" id="js-btn-submit">Рассчитать</button>-->
-<!--                <input class="calculation-button" type="submit" value="Назад">-->
-<!--                <input class="calculation-button" type="submit" value="Далее">-->
-                <button type="button" class="calculation-button btn btn-secondary" id="js-btn-submit">Рассчитать</button>
+                <!--                <button type="button" class="btn btn-secondary" id="js-btn-submit">Рассчитать</button>-->
+                <!--                <input class="calculation-button" type="submit" value="Назад">-->
+                <!--                <input class="calculation-button" type="submit" value="Далее">-->
+                <button type="button" class="calculation-button btn btn-secondary" id="js-btn-submit">Рассчитать
+                </button>
                 <button type="button" class="calculation-button btn btn-secondary" id="js-btn-print">Печать</button>
             </div>
 
         </div>
 
-        <div  class="flex-row center">
+
+        <!--        <div class="form">-->
+        <!--            <div class="form__row">-->
+        <!--                <div class="form__label">-->
+        <!--                    <span>ПТС</span>-->
+        <!--                </div>-->
+        <!--                <div class="form__content">-->
+        <!---->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="form__row">-->
+        <!--                <div class="form__label">-->
+        <!--                    <span>VIN number</span>-->
+        <!--                </div>-->
+        <!--                <div class="form__content">-->
+        <!---->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+
+    </div>
+
+
+    <h2>Сведения о транспортном средстве</h2>
+    <div class="calculation-container">
+        <div class="table calculation">
+
+            <div class="table-row">
+                <label class="calculation-label">Государственный регистрационный знак</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Идентификационный номер VIN</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Категория ТС</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Мощность двигателя, л.с.</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Объем двигателя, см3</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Количество ключей замка зажигания</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Разрешенная макс. масса, кг</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Серия и № ПТС / ПСМ</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Серия и № СТС</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+        </div>
+    </div>
+
+    <h2>Страхователь</h2>
+    <div class="calculation-container">
+        <div class="table calculation">
+
+            <div class="table-row fix">
+                <label class="calculation-label">ЛИЧНЫЕ ДАННЫЕ</label>
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Фамилия</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Имя</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Отчество</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Гражданство</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Дата рождения</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">Контактный телефон</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">E-mail</label>
+                <input class="calculation-content" type="text">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label">ИНН</label>
+                <input class="calculation-content" type="text">
+            </div>
 
         </div>
 
+        <hr class="calculation-divider">
 
+        <div class="table calculation">
 
-<!--        <div class="form">-->
-<!--            <div class="form__row">-->
-<!--                <div class="form__label">-->
-<!--                    <span>ПТС</span>-->
-<!--                </div>-->
-<!--                <div class="form__content">-->
-<!---->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="form__row">-->
-<!--                <div class="form__label">-->
-<!--                    <span>VIN number</span>-->
-<!--                </div>-->
-<!--                <div class="form__content">-->
-<!---->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+            <div class="table-row fix">
+                <label class="calculation-label">ПАСПОРТНЫЕ ДАННЫЕ</label>
+            </div>
 
+            <div class="table-row">
+                <label class="calculation-label">Паспорт</label>
+                <input class="calculation-content" type="text">
+            </div>
 
+            <div class="table-row">
+                <label class="calculation-label">Дата выдачи</label>
+                <input class="calculation-content" type="text">
+            </div>
 
-    </form>
-</div>
+            <div class="table-row">
+                <label class="calculation-label">Адрес постоянной регистрации</label>
+                <input class="calculation-content" type="text" placeholder="Регион / район">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label"></label>
+                <input class="calculation-content" type="text" placeholder="Город / н.п.">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label"></label>
+                <input class="calculation-content" type="text" placeholder="Улица">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label"></label>
+                <input class="calculation-content" type="text" placeholder="Дом">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label"></label>
+                <input class="calculation-content" type="text" placeholder="Квартира">
+            </div>
+
+          </div>
+
+    </div>
+
+</form>

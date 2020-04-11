@@ -3,7 +3,7 @@
 body {
     margin: 0;
     font-family: "Noto Sans", Arial, sans-serif;
-    color: rgb(73, 80, 87);
+    color: #495057;
     /*font-size: 14px;*/
 }
 
@@ -17,19 +17,25 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    margin: 24px 0;
+    font-size: 24px;
+    text-align: center;
+}
+
 select {
     padding: 6px 12px;
     border-width: 1px;
     border-style: solid;
     border-radius: 4px;
-    border-color: rgb(206, 212, 218);
+    border-color: #CED4DA;
     background-clip: padding-box;
     font-size: 16px;
-    color: rgb(73, 80, 87);
+    color: #495057;
 }
 
 select:disabled {
-    background-color: rgb(233, 236, 239);
+    background-color: #E9ECEF;
 }
 
 input[type=text] {
@@ -37,10 +43,10 @@ input[type=text] {
     border-width: 1px;
     border-style: solid;
     border-radius: 4px;
-    border-color: rgb(206, 212, 218);
+    border-color: #CED4DA;
     box-sizing: border-box;
     font-size: 16px;
-    color: rgb(73, 80, 87);
+    color: #495057;
 
     /*overflow: visible;*/
 
@@ -50,15 +56,19 @@ input[type=text] {
     /*height: 38px;*/
 }
 
+input[type=text]::placeholder {
+    color: #949DA5;
+}
+
 input[type=password] {
     padding: 6px 12px;
     border-width: 1px;
     border-style: solid;
     border-radius: 4px;
-    border-color: rgb(206, 212, 218);
+    border-color: #CED4DA;
     box-sizing: border-box;
     font-size: 16px;
-    color: rgb(73, 80, 87);
+    color: #495057;
 }
 
 input[type=submit], button {
@@ -183,6 +193,10 @@ input[type=submit]:hover, button:hover {
     display: table-row;
 }
 
+.fix {
+    height: 58px;
+}
+
 .ta-left {
     text-align: left;
 }
@@ -196,7 +210,7 @@ input[type=submit]:hover, button:hover {
 }
 
 .display {
-    display: inline-block;
+    display: none;
 }
 
 .table-row a {
@@ -287,8 +301,16 @@ input[type=submit]:hover, button:hover {
     margin: 16px 0 0 24px;
     width: 130px;
 }
-/*=== end-calculation-container ===*/
 
+.calculation-divider {
+    margin: 24px auto 12px;
+    width: 60%;
+    border: none;
+    border-bottom: 1px solid #CED4DA;
+
+}
+
+/*=== end-calculation-container ===*/
 
 
 /*=== calculation form ===*/
@@ -296,13 +318,16 @@ input[type=submit]:hover, button:hover {
     margin: 0 auto;
     max-width: 610px;
 }
+
 .form__row {
     position: relative;
     display: block;
 }
-.form__row +.form__row {
+
+.form__row + .form__row {
     margin-top: 16px;
 }
+
 .form__label {
     position: absolute;
     top: 20px;
@@ -310,9 +335,8 @@ input[type=submit]:hover, button:hover {
     max-width: 210px;
     display: block;
 }
+
 /*=== end calculation form ===*/
-
-
 
 
 /*.form-label {*/
