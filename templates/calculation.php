@@ -183,12 +183,20 @@
 
             <div class="table-row">
                 <label class="calculation-label">Государственный регистрационный знак</label>
-                <input class="calculation-content" type="text">
+                <div class="flex-row">
+                    <input class="calculation-content" id="auto-number__number" type="text" placeholder="A 111 AA"
+                           maxlength="6">
+                    <input class="calculation-content" id="auto-number__region" type="text" placeholder="111"
+                           maxlength="3">
+                    <input class="calculation-content ta-center" id="auto-number__country" type="text" placeholder="RUS"
+                           disabled>
+                </div>
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Идентификационный номер VIN</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" type="text"
+                       maxlength="17">
             </div>
 
             <div class="table-row">
@@ -218,12 +226,22 @@
 
             <div class="table-row">
                 <label class="calculation-label">Серия и № ПТС / ПСМ</label>
-                <input class="calculation-content" type="text">
+                <div class="flex-row">
+                    <input class="calculation-content document-serial" type="text" placeholder="Серия"
+                           maxlength="4">
+                    <input class="calculation-content document-number" type="text" placeholder="Номер"
+                           maxlength="6">
+                </div>
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Серия и № СТС</label>
-                <input class="calculation-content" type="text">
+                <div class="flex-row">
+                    <input class="calculation-content document-serial" type="text" placeholder="Серия"
+                           maxlength="4">
+                    <input class="calculation-content document-number" type="text" placeholder="Номер"
+                           maxlength="6">
+                </div>
             </div>
 
         </div>
@@ -259,12 +277,12 @@
 
             <div class="table-row">
                 <label class="calculation-label">Дата рождения</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" type="text" placeholder="__.__.____">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Контактный телефон</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" type="text" placeholder="+7 (___) ___-__-__">
             </div>
 
             <div class="table-row">
@@ -289,13 +307,29 @@
 
             <div class="table-row">
                 <label class="calculation-label">Паспорт</label>
-                <input class="calculation-content" type="text">
+                <div class="flex-row">
+                    <input class="calculation-content document-serial" type="text" placeholder="Серия"
+                           maxlength="4">
+                    <input class="calculation-content document-number" type="text" placeholder="Номер"
+                           maxlength="6">
+                </div>
             </div>
 
             <div class="table-row">
-                <label class="calculation-label">Дата выдачи</label>
-                <input class="calculation-content" type="text">
+                <label class="calculation-label"></label>
+                <input class="calculation-content" type="text" placeholder="Выдан">
             </div>
+
+            <div class="table-row">
+                <label class="calculation-label"></label>
+                <input class="calculation-content" type="text" placeholder="Дата выдачи">
+            </div>
+
+            <div class="table-row">
+                <label class="calculation-label"></label>
+                <input class="calculation-content" type="text" placeholder="Код подразделения">
+            </div>
+
 
             <div class="table-row">
                 <label class="calculation-label">Адрес постоянной регистрации</label>
@@ -314,15 +348,16 @@
 
             <div class="table-row">
                 <label class="calculation-label"></label>
-                <input class="calculation-content" type="text" placeholder="Дом">
+                <div class="flex-row">
+                    <input class="calculation-content address-number" type="text" placeholder="Дом">
+                    <input class="calculation-content address-number" type="text" placeholder="Корпус">
+                    <input class="calculation-content address-number" type="text" placeholder="Квартира">
+                </div>
+
             </div>
 
-            <div class="table-row">
-                <label class="calculation-label"></label>
-                <input class="calculation-content" type="text" placeholder="Квартира">
-            </div>
 
-          </div>
+        </div>
 
     </div>
 
