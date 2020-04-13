@@ -2,6 +2,7 @@
 
 namespace Calc\Controllers;
 
+use Calc\Exceptions\UnauthorizedException;
 use Calc\Functions\SQL;
 use Calc\Models\Calculation\Age;
 use Calc\Models\Calculation\AgeAndExperienceCoefficient;
@@ -14,6 +15,11 @@ class CalculationController extends AbstractController
 {
     public function submit()
     {
+        if ($this->user === null) {
+            header('Location: /');
+            exit;
+        }
+
         static $maxAge = 0;
         static $maxExperience = 0;
 
@@ -118,6 +124,11 @@ class CalculationController extends AbstractController
 
     public function selectMark()
     {
+        if ($this->user === null) {
+            header('Location: /');
+            exit;
+        }
+
         if (isset($_POST['mark']) && !empty($_POST['mark'])) {
             $mark = $_POST['mark'];
             $db = Db::getInstance();
@@ -133,6 +144,9 @@ class CalculationController extends AbstractController
 
     public function calculation()
     {
+        if ($this->user === null) {
+            throw new UnauthorizedException();
+        }
         $marks = SQL::getValues(TABLE_NAME_MARK, 'mark', true);
         $franchises = SQL::getValues(TABLE_NAME_FRANCHISE, 'value', true);
         $periods = SQL::getValues(TABLE_NAME_PERIOD, 'value', false);
@@ -164,6 +178,11 @@ class CalculationController extends AbstractController
 
     public function getMarks()
     {
+        if ($this->user === null) {
+            header('Location: /');
+            exit;
+        }
+
         $marks = SQL::getValues(TABLE_NAME_MARK, 'mark', true);
         echo json_encode($marks);
     }

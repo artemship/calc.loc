@@ -135,8 +135,8 @@ class User extends ActiveRecordEntity
             throw new InvalidArgumentException('Не передан пароль');
         }
 
-        if (mb_strlen($newPassword) < 8) {
-            throw new InvalidArgumentException('Пароль должен быть не менее 8 символов');
+        if (mb_strlen($newPassword) < 3) {
+            throw new InvalidArgumentException('Пароль должен быть не менее 3 символов');
         }
 
         $user->passwordHash = password_hash($newPassword, PASSWORD_DEFAULT);

@@ -2,7 +2,9 @@
 
 namespace Calc\Controllers;
 
+use Calc\Exceptions\ForbiddenException;
 use Calc\Exceptions\InvalidArgumentException;
+use Calc\Exceptions\UnauthorizedException;
 use Calc\Models\Users\User;
 use Calc\Services\UsersAuthService;
 
@@ -16,6 +18,11 @@ class UsersController extends AbstractController
 
     public function login()
     {
+        if ($this->user !== null) {
+            header('Location: /');
+            exit;
+        }
+
         if (!empty($_POST)) {
             try {
                 $user = User::login($_POST);
@@ -32,6 +39,14 @@ class UsersController extends AbstractController
 
     public function signUp()
     {
+        if ($this->user === null) {
+            throw new UnauthorizedException();
+        }
+
+        if ($this->user->getRole() != 'admin') {
+            throw new ForbiddenException();
+        }
+
         if (!empty($_POST)) {
             try {
                 $user = User::signUp($_POST);
@@ -51,6 +66,9 @@ class UsersController extends AbstractController
 
     public function profile()
     {
+        if ($this->user === null) {
+            throw new UnauthorizedException();
+        }
         $user = $this->user;
         if (!empty($_POST['password'])) {
             try {

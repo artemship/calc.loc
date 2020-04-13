@@ -1,5 +1,9 @@
 @import "checkBoxAndRadio.css";
 
+html {
+    overflow-y: scroll;
+}
+
 body {
     margin: 0;
     font-family: "Noto Sans", Arial, sans-serif;
@@ -211,6 +215,10 @@ input[type=submit]:hover, button:hover {
 
 .display {
     display: none;
+}
+
+.exceptionErrorMessage {
+    font-size: 16px;
 }
 
 .table-row a {

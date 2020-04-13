@@ -1,10 +1,13 @@
 <?php
-    require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use Calc\Exceptions\DbException;
+use Calc\Exceptions\ForbiddenException;
 use Calc\Exceptions\NotFoundException;
+use Calc\Exceptions\UnauthorizedException;
 use Calc\Models\Cars\Car;
 use Calc\Services\Db;
+use Calc\Services\UsersAuthService;
 use Calc\View\View;
 
 try {
@@ -39,21 +42,24 @@ try {
 } catch (DbException $e) {
     $view = new View(__DIR__ . '/../templates/errors');
     $view->renderHtml('500.php', ['error' => $e->getMessage()], 500);
-//} catch (UnauthorizedException $e) {
-//    $view = new View(__DIR__ . '/../templates/errors');
-//    $view->renderHtml('401.php', ['error' => $e->getMessage()], 401);
+} catch (UnauthorizedException $e) {
+    $view = new View(__DIR__ . '/../templates/errors');
+    $view->renderHtml('401.php', [
+        'error' => $e->getMessage(),
+        'user' => UsersAuthService::getUserByToken()
+    ], 401);
 } catch (NotFoundException $e) {
     $view = new View(__DIR__ . '/../templates/errors');
     $view->renderHtml('404.php', [
         'error' => $e->getMessage(),
-//        'user' => UsersAuthService::getUserByToken()
+        'user' => UsersAuthService::getUserByToken()
     ], 404);
-//} catch (ForbiddenException $e) {
-//    $view = new View(__DIR__ . '/../templates/errors');
-//    $view->renderHtml('403.php', [
-//        'error' => $e->getMessage(),
-//        'user' => UsersAuthService::getUserByToken()
-//    ], 403);
+} catch (ForbiddenException $e) {
+    $view = new View(__DIR__ . '/../templates/errors');
+    $view->renderHtml('403.php', [
+        'error' => $e->getMessage(),
+        'user' => UsersAuthService::getUserByToken()
+    ], 403);
 }
 
 

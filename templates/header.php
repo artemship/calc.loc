@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css" type="text/css"/>
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
-<!--          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+    <!--          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -25,12 +25,18 @@
     <nav>
         <div class="menu">
             <div class="flex-row">
-                <div class="menu-item">
-                    КАСКО
-                </div>
-                <div class="menu-item">
-                    ОСАГО
-                </div>
+                <?php if (!empty($user)): ?>
+                <a href="/calculation">
+                    <div class="menu-item">
+                        Калькулятор
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="menu-item">
+                        MenuItem2
+                    </div>
+                </a>
+                <?php endif; ?>
             </div>
 
             <div class="flex-row ">
