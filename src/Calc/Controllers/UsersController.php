@@ -64,23 +64,5 @@ class UsersController extends AbstractController
         $this->view->renderHtml('users/signUp.php');
     }
 
-    public function profile()
-    {
-        if ($this->user === null) {
-            throw new UnauthorizedException();
-        }
-        $user = $this->user;
-        if (!empty($_POST['password'])) {
-            try {
-                $user = User::changePassword($user, $_POST['password']);
-            } catch (InvalidArgumentException $e) {
-                $this->view->renderHtml('users/profile.php', ['error' => $e->getMessage()]);
-                return;
-            }
-            $this->view->renderHtml('users/profile.php', ['successful' => 'Пароль изменен успешно']);
-            return;
-        }
-        $this->view->renderHtml('users/profile.php');
-    }
 
 }

@@ -3,18 +3,35 @@
 namespace Calc\Models\Users;
 
 use Calc\Exceptions\InvalidArgumentException;
+use Calc\Functions\Validator;
 use Calc\Models\ActiveRecordEntity;
 
 class User extends ActiveRecordEntity
 {
     /** @var string */
     protected $login;
+
     /** @var string */
-    protected $passwordHash;
+    protected $firstName;
+
+    /** @var string */
+    protected $lastName;
+
+    /** @var string */
+    protected $email;
+
+    /** @var int */
+    protected $isAccessed;
+
     /** @var string */
     protected $role;
+
+    /** @var string */
+    protected $passwordHash;
+
     /** @var string */
     protected $authToken;
+
 
     /**
      * @return string
@@ -27,9 +44,33 @@ class User extends ActiveRecordEntity
     /**
      * @return string
      */
-    public function getPasswordHash(): string
+    public function getFirstName(): string
     {
-        return $this->passwordHash;
+        return $this->firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAccessed(): bool
+    {
+        return $this->isAccessed;
     }
 
     /**
@@ -43,10 +84,19 @@ class User extends ActiveRecordEntity
     /**
      * @return string
      */
+    public function getPasswordHash(): string
+    {
+        return $this->passwordHash;
+    }
+
+    /**
+     * @return string
+     */
     public function getAuthToken(): string
     {
         return $this->authToken;
     }
+
 
     protected static function getTableName(): string
     {
@@ -129,7 +179,7 @@ class User extends ActiveRecordEntity
         return $user;
     }
 
-    public static function changePassword(User $user, string $newPassword): User
+    public static function changePassword(User $user, string $newPassword, string $confirmPassword): User
     {
         if (empty($newPassword)) {
             throw new InvalidArgumentException('Не передан пароль');
@@ -139,10 +189,51 @@ class User extends ActiveRecordEntity
             throw new InvalidArgumentException('Пароль должен быть не менее 3 символов');
         }
 
+        if ($newPassword !== $confirmPassword) {
+            throw new InvalidArgumentException('Пароль не совпадает');
+        }
+
         $user->passwordHash = password_hash($newPassword, PASSWORD_DEFAULT);
         $user->save();
 
         return $user;
+    }
+
+    public function updateFromArray(array $fields): User
+    {
+        if (empty($fields['firstName'])) {
+            throw new InvalidArgumentException('Укажите имя');
+        }
+        if (!Validator::checkName($fields['firstName'])) {
+            throw new InvalidArgumentException('Введите корректное имя');
+        }
+        if (empty($fields['lastName'])) {
+            throw new InvalidArgumentException('Укажите фамилию');
+        }
+        if (!Validator::checkName($fields['lastName'])) {
+            throw new InvalidArgumentException('Введите корректную фамилию');
+        }
+        if (empty($fields['email'])) {
+            throw new InvalidArgumentException('Укажите электронный адрес');
+        }
+        if (!Validator::checkEmail($fields['email'])) {
+            throw new InvalidArgumentException('Введите корректный электронный адрес');
+        }
+        if (mb_strlen($fields['password']) > 0 && mb_strlen($fields['password']) < 3) {
+            throw new InvalidArgumentException('Пароль должен быть не менее 3 символов');
+        }
+        if ($fields['password'] !== $fields['confirmPassword']) {
+            throw new InvalidArgumentException('Пароль не совпадает');
+        } else {
+            $this->passwordHash = password_hash($fields['password'], PASSWORD_DEFAULT);
+        }
+
+        $this->firstName = $fields['firstName'];
+        $this->lastName = $fields['lastName'];
+        $this->email = $fields['email'];
+
+        $this->save();
+        return $this;
     }
 
 

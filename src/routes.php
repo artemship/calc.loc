@@ -2,15 +2,20 @@
 
 return [
     '~^register~' => [\Calc\Controllers\UsersController::class, 'signUp'],
-    '~^profile~' => [\Calc\Controllers\UsersController::class, 'profile'],
     '~^login$~' => [\Calc\Controllers\UsersController::class, 'login'],
     '~^logout$~' => [\Calc\Controllers\UsersController::class, 'logout'],
+
+    '~^cabinet/profile~' => [\Calc\Controllers\CabinetController::class, 'cabinetProfile'],
+    '~^cabinet/users~' => [\Calc\Controllers\CabinetController::class, 'cabinetUsers'],
+
     '~^calculation$~' => [\Calc\Controllers\CalculationController::class, 'calculation'],
     '~^ajax/btn/submit$~' => [\Calc\Controllers\CalculationController::class, 'submit'],
     '~^ajax/select/mark$~' => [\Calc\Controllers\CalculationController::class, 'selectMark'],
     '~^js/get/marks$~' => [\Calc\Controllers\CalculationController::class, 'getMarks'],
+
     '~^$~' => [\Calc\Controllers\MainController::class, 'main'],
     '~^policy$~' => [\Calc\Controllers\MainController::class, 'policy'],
+
 //    '~^articles/(\d+)/comments/(\d+)/delete$~' => [\MyProject\Controllers\CommentsController::class, 'delete'],
 //    '~^articles/(\d+)/comments/(\d+)/edit$~' => [\MyProject\Controllers\CommentsController::class, 'edit'],
 //    '~^articles/(\d+)/comments$~' => [\MyProject\Controllers\CommentsController::class, 'add'],

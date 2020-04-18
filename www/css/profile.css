@@ -1,0 +1,130 @@
+.cabinet_container {
+    display: flex;
+    background-color: #FFFFFF;
+}
+
+.cabinet_sidebar {
+    margin-right: 24px;
+    max-width: 280px;
+    /*border-width: 1px;*/
+    /*border-style: solid;*/
+    /*border-color: #CED4DA;*/
+    /*flex-grow: 1;*/
+}
+
+.cabinet_user {
+    padding: 15px 15px 24px;
+    /*background-color: #DAE9F6;*/
+    border-bottom: 1px #CED4DA solid;
+}
+
+.cabinet_user_name {
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.cabinet_user_contact {
+    margin-bottom: 8px;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.cabinet_user_button {
+    margin-top: 16px;
+
+    /*!*display: flex;*!*/
+    /*padding: 32px 24px;*/
+    /*!*width: 120px;*!*/
+    /*!*height: 36px;*!*/
+    /*background-color: #FFFFFF;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
+
+
+.cabinet_tabs {
+    /*padding: 15px 0;*/
+}
+
+.cabinet_tab:hover {
+    border-left-color: #f7d117;
+    color: #0a1a9c;
+    transition: all ease-in-out 0.2s;
+
+}
+
+.cabinet_tab {
+    padding: 12px 8px;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 8px;
+    border-style: solid;
+    border-color: #CED4DA;
+    border-left-color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    color: #495057;
+}
+
+.cabinet_content {
+    /*background-color: #DAE9F6;*/
+    flex: 1;
+    padding: 15px;
+}
+
+.cabinet_profile_line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*margin-bottom: 24px;*/
+    width: 60%;
+    margin: 0 auto 16px;
+}
+
+.cabinet_profile_line label {
+    margin-right: 24px;
+    width: 30%;
+
+}
+
+.cabinet_profile_line input {
+    height: 42px;
+    flex-grow: 1;
+}
+
+.cabinet_profile_line input[type=submit] {
+    flex-grow: inherit;
+}
+
+/*.cabinet_profile_input_block {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    flex-grow: 1;*/
+/*}*/
+
+.cabinet_profile_input_block input {
+    height: 42px;
+    /*width: 90%;*/
+}
+
+.i-required {
+    margin-left: 4px;
+    color: #f7624e;
+}
+
+.title {
+    /*padding: 10px 0;*/
+    /*font-size: 32px;*/
+}
+
+.title:before {
+    content: '';
+    width: 40px;
+    height: 3px;
+    background: #f7d117;
+    font-size: 0;
+    position: absolute;
+    left: 50%;
+    margin: 40px 0 0 -20px;
+}
