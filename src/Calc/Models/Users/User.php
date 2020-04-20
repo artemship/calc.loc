@@ -179,26 +179,6 @@ class User extends ActiveRecordEntity
         return $user;
     }
 
-    public static function changePassword(User $user, string $newPassword, string $confirmPassword): User
-    {
-        if (empty($newPassword)) {
-            throw new InvalidArgumentException('Не передан пароль');
-        }
-
-        if (mb_strlen($newPassword) < 3) {
-            throw new InvalidArgumentException('Пароль должен быть не менее 3 символов');
-        }
-
-        if ($newPassword !== $confirmPassword) {
-            throw new InvalidArgumentException('Пароль не совпадает');
-        }
-
-        $user->passwordHash = password_hash($newPassword, PASSWORD_DEFAULT);
-        $user->save();
-
-        return $user;
-    }
-
     public function updateFromArray(array $fields): User
     {
         if (empty($fields['firstName'])) {
@@ -234,6 +214,21 @@ class User extends ActiveRecordEntity
 
         $this->save();
         return $this;
+    }
+
+    public static function switchAccess(User $user, int $isAccessed): void
+    {
+        if (empty($user)) {
+            throw new InvalidArgumentException('Пользователь не передан');
+        }
+        if ($isAccessed !== 0 && $isAccessed !== 1) {
+            throw new InvalidArgumentException('Передан неверный идентификатор доступа');
+        }
+        if ($user->getRole() === 'admin') {
+            throw new InvalidArgumentException('Администратору нельзя поменять идентификатор доступа');
+        }
+        $user->isAccessed = $isAccessed;
+        $user->save();
     }
 
 

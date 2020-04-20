@@ -52,6 +52,26 @@ class CabinetController extends AbstractController
         $this->view->renderHtml('cabinet/cabinet.php', ['title' => 'Личные данные']);
     }
 
+    public function provideAccess()
+    {
+        if (empty($_POST['userId'])) {
+            die (json_encode('Wrong userId'));
+        }
+        if (!isset($_POST['isAccessed'])) {
+            die (json_encode('Wrong isAccessed'));
+        }
+        $userId = (int)$_POST['userId'];
+        $isAccessed = $_POST['isAccessed'] === 'true' ? 1 : 0;
+        $user = User::getById($userId);
+        try {
+            User::switchAccess($user, $isAccessed);
+        } catch (InvalidArgumentException $e) {
+            echo json_encode(0);
+            return;
+        }
+        echo json_encode(1);
+    }
+
     public function cabinetUsers()
     {
         if ($this->user === null) {
@@ -61,7 +81,10 @@ class CabinetController extends AbstractController
             throw new ForbiddenException();
         }
 
+        $arrayUsers = User::findAll();
+
         $this->view->renderHtml('cabinet/cabinet.php', [
+                'arrayUsers' => $arrayUsers,
                 'tabName' => 'users',
                 'title' => 'Пользователи']
         );

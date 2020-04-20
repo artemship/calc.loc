@@ -108,6 +108,15 @@
     /*width: 90%;*/
 }
 
+.cabinet_table {
+    width: 100%;
+}
+
+.cabinet_table th {
+    padding: 0;
+    text-align: left;
+}
+
 .i-required {
     margin-left: 4px;
     color: #f7624e;
