@@ -110,11 +110,19 @@
 
 .cabinet_table {
     width: 100%;
+    border: 1px solid #808080;
 }
 
 .cabinet_table th {
     padding: 0;
     text-align: left;
+}
+
+.cabinet_table td {
+    border: 1px solid #808080;
+    /*bordercolor: #f7d117;*/
+    /*bgcolor: #888888;*/
+    font-size: 18px;
 }
 
 .i-required {
