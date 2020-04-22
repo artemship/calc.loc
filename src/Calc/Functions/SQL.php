@@ -2,6 +2,7 @@
 
 namespace Calc\Functions;
 
+use Calc\Models\Users\User;
 use Calc\Services\Db;
 
 define('TABLE_NAME_FRANCHISE', 'franchises');
@@ -13,6 +14,15 @@ define('TABLE_NAME_ADJUSTING_CARS', 'adjusting_cars');
 
 class SQL
 {
+    public static function getLimitValues(string $tableName, int $limit, $class): array
+    {
+        $db = Db::getInstance();
+        return $db->query('SELECT * FROM `' . $tableName . '` LIMIT ' . $limit . ';', [], $class);
+    }
+
+
+
+
     public static function getValues(string $fromTable, string $selectColumn, bool $isDistinct): ?array
     {
         $db = Db::getInstance();

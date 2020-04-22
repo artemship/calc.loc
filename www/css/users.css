@@ -4,6 +4,7 @@
     border: 1px solid #E3E6F0;
     border-bottom: none;
     border-right: none;
+    margin-bottom: 20px;
 }
 
 .cabinet_users_table-title {
@@ -29,6 +30,29 @@
     font-size: 14px;
     vertical-align: middle;
 }
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation a {
+    padding: 4px 15px;
+    background: #0a1971;
+    color: #FFFFFF;
+}
+
+.navigation a:hover {
+    background: #0a1a9c;
+}
+
+.navigation a.selected {
+    background: #f7d117;
+    color: #0a1971;
+}
+
 
 
 

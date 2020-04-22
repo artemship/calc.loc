@@ -5,6 +5,8 @@ namespace Calc\Controllers;
 use Calc\Exceptions\ForbiddenException;
 use Calc\Exceptions\InvalidArgumentException;
 use Calc\Exceptions\UnauthorizedException;
+use Calc\Functions\Pagination;
+use Calc\Functions\SQL;
 use Calc\Models\Users\User;
 
 class CabinetController extends AbstractController
@@ -80,14 +82,36 @@ class CabinetController extends AbstractController
         if (($this->user->getRole() != 'admin')) {
             throw new ForbiddenException();
         }
+        $limits = [10, 20, 50, 100];
+        $arrayUsers = [];
+        $limit = $limits[0];
+        if (!empty($_POST['usersPerPage'])) {
+            $limit = (int)$_POST['usersPerPage'];
+        }
 
-        $arrayUsers = User::findAll();
+//        if (empty($_GET['page']) || $_GET['page'] == 1) {
+//            $arrayUsers = SQL::getLimitValues('users', $limit, User::class);
+//        } else {
+//            $arrayUsers = User::findAll();
+//        }
+
+        $navigation = Pagination::createPagination($_GET);
+
 
         $this->view->renderHtml('cabinet/cabinet.php', [
+                'limit' => $limit,
+                'limits' => $limits,
+                'navigation' => $navigation,
                 'arrayUsers' => $arrayUsers,
                 'tabName' => 'users',
                 'title' => 'Пользователи']
         );
+    }
+
+    public function getUsers()
+    {
+        $arrayUsers = User::findAll();
+        echo json_encode($arrayUsers);
     }
 
 

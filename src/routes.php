@@ -8,6 +8,7 @@ return [
     '~^cabinet/profile~' => [\Calc\Controllers\CabinetController::class, 'cabinetProfile'],
     '~^cabinet/users~' => [\Calc\Controllers\CabinetController::class, 'cabinetUsers'],
     '~^ajax/provide/access~' => [\Calc\Controllers\CabinetController::class, 'provideAccess'],
+    '~^js/get/users~' => [\Calc\Controllers\CabinetController::class, 'getUsers'],
 
     '~^calculation$~' => [\Calc\Controllers\CalculationController::class, 'calculation'],
     '~^ajax/btn/submit$~' => [\Calc\Controllers\CalculationController::class, 'submit'],
