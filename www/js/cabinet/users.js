@@ -7,18 +7,28 @@ $(function () {
     xhr.onload = function () {
         users = xhr.response;
         // console.log(users);
-        outputHtml(users);
+        outputHtml(users, 1);
     };
     xhr.send(null);
 
     $("#js-amount-per-page").change(function () {
         $('#js-users-table').empty();
-        outputHtml(users);
-    })
+        $('#js-navigation').empty();
+        outputHtml(users, 1);
+    });
 
-    function outputHtml() {
+    function selectPage(event) {
+        let pageNumber = event.target.value
+        $('#js-users-table').empty();
+        $('#js-navigation').empty();
+        outputHtml(users, pageNumber);
+    }
+
+    function outputHtml(users, pageNumber) {
+        // alert(u[0]['login']);
         // const outputHtml = users => {
-        let amountPerPage = document.getElementById("js-amount-per-page").value;
+        pageNumber = Number(pageNumber);
+        let amountPerPage = Number(document.getElementById("js-amount-per-page").value);
 
         let row = document.createElement("div");
         row.className = 'cabinet_users_table-title';
@@ -48,8 +58,9 @@ $(function () {
 
 
         if (users.length > 0) {
-            let i = 0;
-            while (i < amountPerPage) {
+            let startingId = (pageNumber - 1) * amountPerPage;
+            let i = startingId;
+            while (i < Math.min(users.length, startingId + amountPerPage)) {
                 row = document.createElement("div");
                 row.className = 'cabinet_users_table-row';
 
@@ -83,11 +94,9 @@ $(function () {
                 const span = document.createElement("span");
                 span.className = 'slider round';
 
-
                 labelSwitch.appendChild(inputCheckBox);
                 labelSwitch.appendChild(span);
                 userAccess.appendChild(labelSwitch);
-
 
                 userLogin.innerHTML = users[i]['login'];
                 userName.innerHTML = users[i]['last_name'] + ' ' + users[i]['first_name'];
@@ -104,6 +113,78 @@ $(function () {
                 i++;
             }
 
+
+            let numberOfPages = Math.ceil(users.length / amountPerPage);
+            if (numberOfPages > 1) {
+                let toBegin = false;
+                let toEnd = false;
+                if (pageNumber > 4) {
+                    toBegin = true;
+                }
+                if (numberOfPages - pageNumber > 3) {
+                    toEnd = true;
+                }
+
+                for (let i = 1; i <= numberOfPages; i++) {
+                    if ((i === 1 || i === numberOfPages) && numberOfPages >= 7) {
+                        let page = document.createElement('label');
+                        if (i === pageNumber) {
+                            page.className = 'selected';
+                        }
+                        if (toBegin === true && i === 1) {
+                            page.className = ' edge';
+                        }
+                        if (toEnd === true && i === numberOfPages) {
+                            page.className = ' edge';
+                        }
+                        page.innerHTML = String(i);
+                        page.value = String(i);
+                        page.addEventListener('click', selectPage);
+                        document.getElementById('js-navigation').appendChild(page);
+                        continue;
+                    }
+
+                    let leftEdge;
+                    let rightEdge;
+
+                    switch (pageNumber) {
+                        case 1 :
+                            rightEdge = 5;
+                            break;
+                        case 2 :
+                            rightEdge = 4;
+                            break;
+                        case 3 :
+                            rightEdge = 3;
+                            break;
+                        case numberOfPages - 2:
+                            leftEdge = 3;
+                            break;
+                        case numberOfPages - 1:
+                            leftEdge = 4;
+                            break;
+                        case numberOfPages:
+                            leftEdge = 5;
+                            break;
+                        default:
+                            rightEdge = 2;
+                            leftEdge = 2;
+                    }
+
+                    if (i < pageNumber - leftEdge || i > pageNumber + rightEdge) {
+                        continue;
+                    }
+
+                    let page = document.createElement('label');
+                    if (i === pageNumber) {
+                        page.className = 'selected';
+                    }
+                    page.value = String(i);
+                    page.innerHTML = String(i);
+                    page.addEventListener('click', selectPage);
+                    document.getElementById('js-navigation').appendChild(page);
+                }
+            }
         }
     }
 
@@ -135,7 +216,6 @@ $(function () {
             }
         });
     }
-
 
 
 });
