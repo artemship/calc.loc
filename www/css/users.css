@@ -13,6 +13,34 @@
     cursor: default;
 }
 
+.cabinet_users_table-title div {
+    position: relative;
+    padding-right: 24px;
+    cursor: pointer;
+}
+
+.cabinet_users_table-title div::before {
+    content: '\2191';
+    color: #D1D4DE;
+    position: absolute;
+    right: 14px;
+}
+
+.cabinet_users_table-title div::after {
+    content: '\2193';
+    color: #D1D4DE;
+    position: absolute;
+    right: 8px;
+}
+
+.asc::before, .desc::after{
+    color: #5b5d67 !important;
+}
+
+.unsorted::before, .unsorted::after {
+    content: none !important;
+}
+
 .cabinet_users_table-row {
     display: table-row;
 }
@@ -34,12 +62,12 @@
 .navigation {
     display: flex;
     flex-direction: row;
-    /*justify-content: center;*/
-    /*align-items: center;*/
 }
 
 .navigation label {
-    padding: 4px 15px;
+    padding: 4px 8px;
+    width: 22px;
+    text-align: center;
     background: #0a1971;
     color: #FFFFFF;
     cursor: pointer;
