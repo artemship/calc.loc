@@ -195,41 +195,41 @@
 
             <div class="table-row">
                 <label class="calculation-label">Идентификационный номер VIN</label>
-                <input class="calculation-content" type="text"
+                <input class="calculation-content" id="vin-id" type="text"
                        maxlength="17">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Категория ТС</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" id="vehicle-category" type="text">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Мощность двигателя, л.с.</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" id="engine-power" type="text">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Объем двигателя, см3</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" id="engine-volume" type="text">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Количество ключей замка зажигания</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" id="keys-amount" type="text">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Разрешенная макс. масса, кг</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" id="permissible-max-weight" type="text">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Серия и № ПТС / ПСМ</label>
                 <div class="flex-row">
-                    <input class="calculation-content document-serial" type="text" placeholder="Серия"
+                    <input class="calculation-content document-serial" id="pts-serial" type="text" placeholder="Серия"
                            maxlength="4">
-                    <input class="calculation-content document-number" type="text" placeholder="Номер"
+                    <input class="calculation-content document-number" id="pts-number" type="text" placeholder="Номер"
                            maxlength="6">
                 </div>
             </div>
@@ -237,9 +237,9 @@
             <div class="table-row">
                 <label class="calculation-label">Серия и № СТС</label>
                 <div class="flex-row">
-                    <input class="calculation-content document-serial" type="text" placeholder="Серия"
+                    <input class="calculation-content document-serial" id="sts-serial" type="text" placeholder="Серия"
                            maxlength="4">
-                    <input class="calculation-content document-number" type="text" placeholder="Номер"
+                    <input class="calculation-content document-number" id="sts-number" type="text" placeholder="Номер"
                            maxlength="6">
                 </div>
             </div>

@@ -201,6 +201,25 @@ $(function () {
         }
 
         if (target.id === "js-btn-print") {
+            let today = new Date();
+            carAge = today.getFullYear() - carAge;
+            let autoNumber = $("#auto-number__number").val() + $("#auto-number__region").val();
+            let enginePower = $("#engine-power").val();
+            let engineVolume = $("#engine-volume").val();
+            let vinId = $("#vin-id").val();
+            let keysAmount = $("#keys-amount").val();
+            let vehicleCategory = $("#vehicle-category").val();
+            let permissibleMaxWeight = $("#permissible-max-weight").val();
+            let ptsSerialNumber = $("#pts-serial").val() + ' ' + $("#pts-number").val();
+            let stsSerialNumber = $("#sts-serial").val() + ' ' + $("#sts-number").val();
+
+
+
+            console.log(vinId);
+            console.log(keysAmount);
+            console.log(vehicleCategory);
+            console.log(permissibleMaxWeight);
+            // return;
             $.ajax({
                 url: '/policy',
                 type: 'POST',
@@ -208,8 +227,18 @@ $(function () {
                 data: {
                     mark: mark,
                     model: model,
-                    group: group,
                     carAge: carAge,
+                    autoNumber: autoNumber,
+                    enginePower: enginePower,
+                    engineVolume: engineVolume,
+                    vinId: vinId,
+                    keysAmount: keysAmount,
+                    vehicleCategory: vehicleCategory,
+                    permissibleMaxWeight: permissibleMaxWeight,
+                    ptsSerialNumber: ptsSerialNumber,
+                    stsSerialNumber: stsSerialNumber,
+
+
                     insurance: insurance,
                     franchise: franchise,
                     age: age,

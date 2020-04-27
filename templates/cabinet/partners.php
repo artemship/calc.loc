@@ -1,4 +1,4 @@
-<script src="/js/cabinet/users.js"></script>
+<script src="/js/cabinet/partners.js"></script>
 
     <div class="flex-row" style="justify-content: space-between; margin-bottom: 15px">
         <div>

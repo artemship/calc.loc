@@ -11,6 +11,7 @@
 
 
     <!--    <link rel="stylesheet" href="css/policy.css" type="text/css"/>-->
+
     <style type="text/css">
         body {
             margin: 0;
@@ -587,13 +588,13 @@
                 Марка:
             </div>
             <div class="cell value w333">
-                <?= $mark?>
+                <?= $mark ?>
             </div>
             <div class="cell caption-blue w226">
                 Модель:
             </div>
             <div class="cell value last">
-                <?= $model?>
+                <?= $model ?>
             </div>
         </div>
 
@@ -602,13 +603,13 @@
                 Год изготовления:
             </div>
             <div class="cell value w333">
-                2019
+                <?= $carAge ?>
             </div>
             <div class="cell caption-blue w226">
                 Гос. рег. знак:
             </div>
             <div class="cell value last">
-                А777АА777
+                <?= $autoNumber ?>
             </div>
         </div>
 
@@ -617,13 +618,13 @@
                 Мощность двигателя, л.с.:
             </div>
             <div class="cell value w333">
-                180
+                <?= $enginePower ?>
             </div>
             <div class="cell caption-blue w226">
                 Объем двигателя, см3:
             </div>
             <div class="cell value last">
-                1600
+                <?= $engineVolume ?>
             </div>
         </div>
 
@@ -632,13 +633,13 @@
                 Идентификационный номер VIN:
             </div>
             <div class="cell value w333">
-                1HGCM82633A004352
+                <?= $vinId ?>
             </div>
             <div class="cell caption-blue w226">
                 Кол-во ключей замка зажигания:
             </div>
             <div class="cell value last">
-                2
+                <?= $keysAmount ?>
             </div>
         </div>
 
@@ -647,13 +648,13 @@
                 Категория ТС:
             </div>
             <div class="cell value w333">
-                45545
+                <?= $vehicleCategory ?>
             </div>
             <div class="cell caption-blue w226">
                 Разрешенная максимальная масса, кг:
             </div>
             <div class="cell value last">
-                2100
+                <?= $permissibleMaxWeight ?>
             </div>
         </div>
 
@@ -662,13 +663,13 @@
                 Серия и № ПТС / ПСМ:
             </div>
             <div class="cell value w333">
-                24 ТХ 205766
+                <?= $ptsSerialNumber ?>
             </div>
             <div class="cell caption-blue w226">
                 Серия и № СТС:
             </div>
             <div class="cell value last">
-                24 ТХ 205766
+                <?= $stsSerialNumber ?>
             </div>
         </div>
 
