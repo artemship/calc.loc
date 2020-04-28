@@ -202,6 +202,41 @@ $(function () {
 
         if (target.id === "js-btn-print") {
             let today = new Date();
+
+            let contractStartHour = today.getHours();
+            let contractStartMinute = today.getMinutes();
+            let contractStartDate = formatDate(today);
+            period = Number(period) + 6;
+            let contractEndDate = formatDate(today, period);
+
+            let policyholderName = $("#policyholder-surname").val() + ' ' +
+                $("#policyholder-name").val() + ' ' +
+                $("#policyholder-patronymic").val();
+            let policyholderRegion = $('#policyholder-region').val();
+
+            let city = $('#policyholder-city').val();
+            let street = $('#policyholder-street').val();
+            let house = $('#policyholder-house').val();
+            let building = $('#policyholder-building').val();
+            let apartment = $('#policyholder-apartment').val();
+            let policyholderAddress = formatAddress(city, street, house, building, apartment);
+
+            let serial = $('#policyholder-passport-serial').val();
+            let number = $('#policyholder-passport-number').val();
+            let issuedBy = $('#policyholder-passport-issued-by').val();
+            let dateOfIssue = $('#policyholder-passport-date-of-issue').val();
+            let codeDepartment = $('#policyholder-passport-code-department').val();
+            let policyholderPassport = formatPassport(serial, number, issuedBy, dateOfIssue, codeDepartment);
+
+            let policyholderCitizenship = $('#policyholder-citizenship').val();
+            let policyholderDateOfBirth = $('#policyholder-date-of-birth').val();
+            let policyholderPhoneNumber = $('#policyholder-phone-number').val();
+            let policyholderEmail = $('#policyholder-email').val();
+            let policyholderINN = $('#policyholder-INN').val();
+
+            // console.log(policyholderPassport);
+            // return;
+
             carAge = today.getFullYear() - carAge;
             let autoNumber = $("#auto-number__number").val() + $("#auto-number__region").val();
             let enginePower = $("#engine-power").val();
@@ -225,6 +260,21 @@ $(function () {
                 type: 'POST',
                 // dataType: 'JSON',
                 data: {
+                    contractStartHour: contractStartHour,
+                    contractStartMinute: contractStartMinute,
+                    contractStartDate: contractStartDate,
+                    policyholderName: policyholderName,
+                    policyholderRegion: policyholderRegion,
+                    policyholderAddress: policyholderAddress,
+                    policyholderPassport: policyholderPassport,
+                    policyholderCitizenship: policyholderCitizenship,
+                    policyholderDateOfBirth: policyholderDateOfBirth,
+                    policyholderPhoneNumber: policyholderPhoneNumber,
+                    policyholderEmail: policyholderEmail,
+                    policyholderINN: policyholderINN,
+                    contractEndDate: contractEndDate,
+
+
                     mark: mark,
                     model: model,
                     carAge: carAge,
@@ -268,6 +318,47 @@ $(function () {
         }
         // alert(target.id);
     });
+
+    function formatDate(date, months) {
+        let dd = date.getDate();
+        if (months > 0) {
+            date.setMonth(date.getMonth() + months);
+            if (dd > date.getDate()) {
+                date.setDate(0);
+            } else {
+                date.setDate(date.getDate() - 1);
+            }
+            dd = date.getDate();
+        }
+        if (dd < 10) dd = '0' + dd;
+
+        let mm = date.getMonth() + 1;
+        if (mm < 10) mm = '0' + mm;
+        // let yy = date.getFullYear() % 100;
+        // if (yy < 10) yy = '0' + yy;
+        let yy = date.getFullYear();
+        return dd + '.' + mm + '.' + yy;
+    }
+
+    function formatAddress(city, street, house, building, apartment) {
+        city = city + ', ';
+        street = street + ', ';
+        house = 'д ' + house;
+        building = (!! building) ? '/' + building + ', ': (!! apartment) ? ', ': '' ;
+        apartment = (!! apartment) ? 'кв ' + apartment : '' ;
+
+        return city + street + house + building + apartment;
+    }
+
+    function formatPassport(serial, number, issuedBy, dateOfIssue, codeDepartment) {
+        serial = serial + ' ';
+        number = number + ' ';
+        issuedBy = issuedBy + ' ';
+        dateOfIssue = dateOfIssue + ' ';
+        codeDepartment = 'К/П ' + codeDepartment;
+
+        return serial + number + issuedBy + dateOfIssue + codeDepartment;
+    }
 
     // $("#js-btn-print").click(function () {
     //     var windowForPrint = window.open('policy');

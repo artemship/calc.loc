@@ -26,6 +26,21 @@ class MainController extends AbstractController
         if ($this->user === null) {
             throw new UnauthorizedException();
         }
+        $contractStartHour = $_POST['contractStartHour'];
+        $contractStartMinute = $_POST['contractStartMinute'];
+        $contractStartDate = $_POST['contractStartDate'];
+        $contractEndDate = $_POST['contractEndDate'];
+        $policyholderName = $_POST['policyholderName'];
+        $policyholderRegion = $_POST['policyholderRegion'];
+        $policyholderAddress = $_POST['policyholderAddress'];
+        $policyholderPassport = $_POST['policyholderPassport'];
+        $policyholderCitizenship = $_POST['policyholderCitizenship'];
+        $policyholderDateOfBirth = $_POST['policyholderDateOfBirth'];
+        $policyholderPhoneNumber = $_POST['policyholderPhoneNumber'];
+        $policyholderEmail = $_POST['policyholderEmail'];
+        $policyholderINN = $_POST['policyholderINN'];
+
+
         $mark = $_POST['mark'];
         $model = $_POST['model'];
         $carAge = $_POST['carAge'];
@@ -39,6 +54,21 @@ class MainController extends AbstractController
         $ptsSerialNumber = $_POST['ptsSerialNumber'];
         $stsSerialNumber = $_POST['stsSerialNumber'];
         $this->view->renderHtml('policy.php', [
+            'contractStartHour' => $contractStartHour,
+            'contractStartMinute' => $contractStartMinute,
+            'contractStartDate' => $contractStartDate,
+            'contractEndDate' => $contractEndDate,
+            'policyholderName' => $policyholderName,
+            'policyholderRegion' => $policyholderRegion,
+            'policyholderAddress' => $policyholderAddress,
+            'policyholderPassport' => $policyholderPassport,
+            'policyholderCitizenship' => $policyholderCitizenship,
+            'policyholderDateOfBirth' => $policyholderDateOfBirth,
+            'policyholderPhoneNumber' => $policyholderPhoneNumber,
+            'policyholderEmail' => $policyholderEmail,
+            'policyholderINN' => $policyholderINN,
+
+
             'mark' => $mark,
             'model' => $model,
             'carAge' => $carAge,

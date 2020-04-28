@@ -257,42 +257,42 @@
 
             <div class="table-row">
                 <label class="calculation-label">Фамилия</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" id="policyholder-surname" type="text">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Имя</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" id="policyholder-name" type="text">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Отчество</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" id="policyholder-patronymic" type="text">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Гражданство</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" id="policyholder-citizenship" type="text">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Дата рождения</label>
-                <input class="calculation-content" type="text" placeholder="__.__.____">
+                <input class="calculation-content" id="policyholder-date-of-birth" type="text" placeholder="__.__.____">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">Контактный телефон</label>
-                <input class="calculation-content" type="text" placeholder="+7 (___) ___-__-__">
+                <input class="calculation-content" id="policyholder-phone-number" type="text" placeholder="+7 (___) ___-__-__">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">E-mail</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" id="policyholder-email" type="text">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label">ИНН</label>
-                <input class="calculation-content" type="text">
+                <input class="calculation-content" id="policyholder-INN" type="text">
             </div>
 
         </div>
@@ -308,50 +308,50 @@
             <div class="table-row">
                 <label class="calculation-label">Паспорт</label>
                 <div class="flex-row">
-                    <input class="calculation-content document-serial" type="text" placeholder="Серия"
-                           maxlength="4">
-                    <input class="calculation-content document-number" type="text" placeholder="Номер"
-                           maxlength="6">
+                    <input class="calculation-content document-serial" id="policyholder-passport-serial"
+                           type="text" placeholder="Серия" maxlength="4">
+                    <input class="calculation-content document-number" id="policyholder-passport-number"
+                           type="text" placeholder="Номер" maxlength="6">
                 </div>
             </div>
 
             <div class="table-row">
                 <label class="calculation-label"></label>
-                <input class="calculation-content" type="text" placeholder="Выдан">
+                <input class="calculation-content" id="policyholder-passport-issued-by" type="text" placeholder="Выдан">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label"></label>
-                <input class="calculation-content" type="text" placeholder="Дата выдачи">
+                <input class="calculation-content" id="policyholder-passport-date-of-issue" type="text" placeholder="Дата выдачи">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label"></label>
-                <input class="calculation-content" type="text" placeholder="Код подразделения">
+                <input class="calculation-content" id="policyholder-passport-code-department" type="text" placeholder="Код подразделения">
             </div>
 
 
             <div class="table-row">
                 <label class="calculation-label">Адрес постоянной регистрации</label>
-                <input class="calculation-content" type="text" placeholder="Регион / район">
+                <input class="calculation-content" id="policyholder-region" type="text" placeholder="Регион / район">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label"></label>
-                <input class="calculation-content" type="text" placeholder="Город / н.п.">
+                <input class="calculation-content" id="policyholder-city" type="text" placeholder="Город / н.п.">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label"></label>
-                <input class="calculation-content" type="text" placeholder="Улица">
+                <input class="calculation-content" id="policyholder-street" type="text" placeholder="Улица">
             </div>
 
             <div class="table-row">
                 <label class="calculation-label"></label>
                 <div class="flex-row">
-                    <input class="calculation-content address-number" type="text" placeholder="Дом">
-                    <input class="calculation-content address-number" type="text" placeholder="Корпус">
-                    <input class="calculation-content address-number" type="text" placeholder="Квартира">
+                    <input class="calculation-content address-number" id="policyholder-house" type="text" placeholder="Дом">
+                    <input class="calculation-content address-number" id="policyholder-building" type="text" placeholder="Корпус">
+                    <input class="calculation-content address-number" id="policyholder-apartment" type="text" placeholder="Квартира">
                 </div>
 
             </div>

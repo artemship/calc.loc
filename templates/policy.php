@@ -415,39 +415,39 @@
                         с
                     </div>
                     <div class="cell value center w29">
-                        9
+                        <?= $contractStartHour ?>
                     </div>
                     <div class="cell caption-blue center fs10 w17">
                         ч.
                     </div>
                     <div class="cell value center w29">
-                        54
+                        <?= $contractStartMinute ?>
                     </div>
                     <div class="cell caption-blue center fs10 w17">
                         м.
                     </div>
                     <div class="cell value center w194">
-                        31.03.2020
+                        <?= $contractStartDate ?>
                     </div>
                 </div>
                 <div class="flex-row">
                     <div class="cell caption-blue center fs10 w17">
-                        с
+                        по
                     </div>
                     <div class="cell value center w29">
-                        9
+                        0
                     </div>
                     <div class="cell caption-blue center fs10 w17">
                         ч.
                     </div>
                     <div class="cell value center w29">
-                        54
+                        0
                     </div>
                     <div class="cell caption-blue center fs10 w17">
                         м.
                     </div>
                     <div class="cell value center w194">
-                        30.03.2021
+                        <?= $contractEndDate ?>
                     </div>
                 </div>
             </div>
@@ -461,7 +461,7 @@
                 ПРИЗНАК ДОГОВОРА
             </div>
             <div class="cell caption-blue fs10 w333">
-                <input type="radio">
+                <input type="radio" checked>
                 <p class="radio">Первоначальный</p>
                 <input type="radio">
                 <p>Переход из другой СК</p>
@@ -474,13 +474,13 @@
                         <div style="margin-left: 64px;">серия</div>
                     </div>
                     <div class="cell value center w87">
-                        1111
+                        <??>
                     </div>
                     <div class="cell caption-blue center w37">
                         номер
                     </div>
                     <div class="cell value center last">
-                        2222
+                        <??>
                     </div>
                 </div>
                 <div class="flex-row">
@@ -488,7 +488,7 @@
                         Наименование предыдущей СК:
                     </div>
                     <div class="cell value center last">
-                        ООО "РОМАШКА"
+                        <??>
                     </div>
                 </div>
 
@@ -502,68 +502,42 @@
         </div>
 
         <div class="flex-row">
-            <div class="cell caption-blue w334">
-                ФИО / наименование организации
-            </div>
-            <div class="cell value last">Иван</div>
+            <div class="cell caption-blue w334">ФИО / наименование организации</div>
+            <div class="cell value last"><?= $policyholderName ?></div>
         </div>
 
         <div class="flex-row">
-            <div class="cell caption-blue w334">
-                Регион
-            </div>
-            <div class="cell value last">Ленинградская область</div>
+            <div class="cell caption-blue w334">Регион</div>
+            <div class="cell value last"><?= $policyholderRegion ?></div>
         </div>
 
         <div class="flex-row">
-            <div class="cell caption-blue w334">
-                Адрес регистрации
-            </div>
-            <div class="cell value last">г. Санкт-Петербург</div>
+            <div class="cell caption-blue w334">Адрес регистрации</div>
+            <div class="cell value last"><?= $policyholderAddress ?></div>
         </div>
 
         <div class="flex-row">
-            <div class="cell caption-blue w334">
-                Паспорт / в. билет (св-во о регистр. ЮЛ). Серия/номер документа, когда и кем выдан, код подразделения
-            </div>
-            <div class="cell value last">4522 321654</div>
+            <div class="cell caption-blue w334">Паспорт / в. билет (св-во о регистр. ЮЛ). Серия/номер документа, когда и кем выдан, код подразделения</div>
+            <div class="cell value last"><?= $policyholderPassport ?></div>
         </div>
 
         <div class="flex-row">
-            <div class="cell caption-blue w334">
-                Гражданство
-            </div>
-            <div class="cell value w310">
-                РФ
-            </div>
-            <div class="cell caption-blue center w110">
-                Дата рождения
-            </div>
-            <div class="cell value last">
-                11.10.1990
-            </div>
+            <div class="cell caption-blue w334">Гражданство</div>
+            <div class="cell value w310"><?= $policyholderCitizenship ?></div>
+            <div class="cell caption-blue center w110">Дата рождения</div>
+            <div class="cell value last"><?= $policyholderDateOfBirth ?></div>
         </div>
 
         <div class="flex-row">
-            <div class="cell caption-blue w334">
-                Контактные телефоны
-            </div>
-            <div class="cell value last">+790151002233</div>
+            <div class="cell caption-blue w334">Контактные телефоны</div>
+            <div class="cell value last"><?= $policyholderPhoneNumber ?></div>
         </div>
 
         <div class="flex-row">
-            <div class="cell caption-blue w334">
-                Адрес электронной почты / email
-            </div>
-            <div class="cell value w310">
-                mail@yandex.ru
-            </div>
-            <div class="cell caption-blue center w110">
-                ИНН
-            </div>
-            <div class="cell value last">
-                502706401358
-            </div>
+            <div class="cell caption-blue w334">Адрес электронной почты / email</div>
+            <div class="cell value w310"><?= $policyholderEmail ?></div>
+            <div class="cell caption-blue center w110">ИНН</div>
+            <div class="cell value last"><?= $policyholderINN ?></div>
         </div>
 
 
