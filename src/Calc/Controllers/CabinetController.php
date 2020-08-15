@@ -55,6 +55,24 @@ class CabinetController extends AbstractController
         $this->view->renderHtml('cabinet/cabinet.php', ['title' => 'Личные данные']);
     }
 
+    public function cabinetUserProfile()
+    {
+        if (!$this->user->isAdmin()) {
+            return;
+        }
+        if (empty($_POST['userLogin'])) {
+            die(json_encode('Wrong userLogin'));
+        }
+
+        $userLogin = $_POST['userLogin'];
+        $user = User::findOneByColumn('login', $userLogin);
+        $this->view->renderHtml('cabinet/cabinet.php', [
+            'title' => 'Личные данные',
+            'user' => $user
+        ]);
+
+    }
+
     public function provideAccess()
     {
         if (empty($_POST['userId'])) {

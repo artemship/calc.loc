@@ -43,6 +43,8 @@
             <?php
             if ($tabName === 'partners'): include __DIR__ . '/../cabinet/partners.php';
             elseif ($tabName === 'users'): include __DIR__ . '/../cabinet/users.php';
+            elseif ($tabName === 'addUser'): include __DIR__ . '/../cabinet/addUser.php';
+            elseif ($tabName === 'addPartner'): include __DIR__ . '/../cabinet/addPartner.php';
 
             else: include __DIR__ . '/../cabinet/profile.php';
             endif ?>

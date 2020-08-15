@@ -23,7 +23,15 @@
         <!--JS Insert table-->
     </div>
 
-    <div class="navigation" id="js-navigation">
-        <!--JS Insert page navigation-->
+
+    <div class="cabinet_under_table">
+        <form action="/cabinet/add/user" method="post">
+            <input type="submit" value="Добавить">
+        </form>
+        <div class="navigation" id="js-navigation">
+            <!--JS Insert page navigation-->
+        </div>
     </div>
+
+
 

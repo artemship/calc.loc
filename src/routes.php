@@ -4,9 +4,14 @@ return [
     '~^register~' => [\Calc\Controllers\UsersController::class, 'signUp'],
     '~^login$~' => [\Calc\Controllers\UsersController::class, 'login'],
     '~^logout$~' => [\Calc\Controllers\UsersController::class, 'logout'],
+    '~^users/(\d+)/activate/(.+)$~' => [\Calc\Controllers\UsersController::class, 'activate'],
+    '~^cabinet/add/user~' => [\Calc\Controllers\UsersController::class, 'addUser'],
+
+    '~^cabinet/add/partner~' => [\Calc\Controllers\PartnersController::class, 'addPartner'],
 
     '~^cabinet/profile~' => [\Calc\Controllers\CabinetController::class, 'cabinetProfile'],
     '~^cabinet/users~' => [\Calc\Controllers\CabinetController::class, 'cabinetUsers'],
+    '~^ajax/cabinet/users/select~' => [\Calc\Controllers\CabinetController::class, 'cabinetUserProfile'],
     '~^cabinet/partners~' => [\Calc\Controllers\CabinetController::class, 'cabinetPartners'],
     '~^ajax/provide/access~' => [\Calc\Controllers\CabinetController::class, 'provideAccess'],
     '~^js/get/users~' => [\Calc\Controllers\CabinetController::class, 'getUsers'],

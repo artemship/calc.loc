@@ -3,6 +3,7 @@
 namespace Calc\Models\Users;
 
 use Calc\Exceptions\InvalidArgumentException;
+use Calc\Functions\Generator;
 use Calc\Functions\Validator;
 use Calc\Models\ActiveRecordEntity;
 
@@ -79,6 +80,14 @@ class User extends ActiveRecordEntity
     public function getRole(): string
     {
         return $this->role;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
     }
 
     /**
@@ -230,6 +239,65 @@ class User extends ActiveRecordEntity
         $user->isAccessed = $isAccessed;
         $user->save();
     }
+
+    public static function addUser(array $userData): array
+    {
+        if (empty($userData['login'])) {
+            throw new InvalidArgumentException('Не передан логин');
+        }
+
+        if (!preg_match('/[a-zA-Z0-9]+/', $userData['login'])) {
+            throw new InvalidArgumentException('Логин может состоять только из символов латинского алфавита и цифр');
+        }
+
+        if (empty($userData['email'])) {
+            throw new InvalidArgumentException('Не передан email');
+        }
+
+        if (!filter_var($userData['email'], FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidArgumentException('Email некорректен');
+        }
+
+//        if (empty($userData['password'])) {
+//            throw new InvalidArgumentException('Не передан пароль');
+//        }
+//
+//        if (mb_strlen($userData['password']) < 8) {
+//            throw new InvalidArgumentException('Пароль должен быть не менее 8 символов');
+//        }
+
+        if (static::findOneByColumn('login', $userData['login']) !== null) {
+            throw new InvalidArgumentException('Пользователь с таким логином уже существет');
+        }
+
+        if (static::findOneByColumn('email', $userData['email']) !== null) {
+            throw new InvalidArgumentException('Пользователь с таким email уже существует');
+        }
+
+        $password = Generator::password();
+        var_dump($password);
+
+        $user = new User();
+        $user->login = $userData['login'];
+        $user->firstName = $userData['firstName'];
+        $user->lastName = $userData['lastName'];
+        $user->email = $userData['email'];
+        $user->passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $user->isAccessed = false;
+        $user->role = 'user';
+        $user->authToken = sha1(random_bytes(100)) . sha1(random_bytes(100));
+        $user->save();
+
+        return ['user' => $user, 'password' => $password];
+    }
+
+    public function activate(): void
+    {
+        $this->isAccessed = true;
+        $this->save();
+    }
+
+
 
 
 }

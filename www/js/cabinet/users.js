@@ -112,7 +112,7 @@ $(function () {
             row = document.createElement("div");
             row.className = 'cabinet_users_table-row';
             userLogin = document.createElement("div");
-            userLogin.className = 'cabinet_users_table-cell';
+            userLogin.className = 'cabinet_users_table-cell user-login';
             userName = document.createElement("div");
             userName.className = 'cabinet_users_table-cell';
             userEmail = document.createElement("div");
@@ -132,7 +132,6 @@ $(function () {
             if (users[i]['is_accessed'] === '1') {
                 inputCheckBox.setAttribute('checked', '');
             }
-            inputCheckBox.addEventListener('click', switchAccess);
 
             const span = document.createElement("span");
             span.className = 'slider round';
@@ -145,6 +144,13 @@ $(function () {
             userName.innerHTML = users[i]['last_name'] + ' ' + users[i]['first_name'];
             userEmail.innerHTML = users[i]['email'];
             userRole.innerHTML = users[i]['role'];
+
+            userLogin.addEventListener('click', selectUser);
+            userName.addEventListener('click', selectUser);
+            userEmail.addEventListener('click', selectUser);
+            userRole.addEventListener('click', selectUser);
+            userAccess.addEventListener('click', selectUser);
+            inputCheckBox.addEventListener('click', switchAccess);
 
             row.appendChild(userLogin);
             row.appendChild(userName);
@@ -228,6 +234,30 @@ $(function () {
             page.addEventListener('click', selectPage);
             document.getElementById('js-navigation').appendChild(page);
         }
+    }
+
+    function selectUser(event) {
+        let element = event.target;
+        if (element.tagName === 'SPAN' || element.tagName === 'INPUT') {
+            return;
+        }
+        console.log(element.parentElement.getElementsByClassName('user-login').item(0).textContent);
+        let userLogin = element.parentElement.getElementsByClassName('user-login').item(0).textContent;
+        // let xhr = new XMLHttpRequest();
+        // let json = JSON.stringify({
+        //     userLogin: userLogin
+        // });
+        // xhr.open('GET', '/ajax/cabinet/users/select', false);
+        // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        // xhr.send(json);
+        $.ajax({
+            url: '/ajax/cabinet/users/select',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                userLogin: userLogin
+            }
+        });
     }
 
     function switchAccess(event) {
